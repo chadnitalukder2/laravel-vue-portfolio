@@ -49,7 +49,7 @@
           <div class="bg-img">
             <img src="../../assets/img/homeNannerShape.png" alt="home" />
           </div>
-          <div class="image">
+          <div class="image" style="display: flex; text-align: center;">
             <img src="../../assets/img/nitesh1-removebg-preview.png" alt="nitesh" />
           </div>
         </div>
@@ -155,19 +155,28 @@
   }
 
   .header-right {
-    
+    flex-basis: 50%;
     @media only screen and (max-width: 992px) {
       width: 100%;
       order: 1;
       
     }
 
-    .image img {
+    .image{
+          margin: 0 auto;
+          display: flex;
+          width: 290px;
+          height: 320px;
+          box-shadow: 0px 0px 0px 4px #ff6b00;
+          margin-top: 30%;
+          border-radius: 6px;
+          overflow: hidden;
+      img {
       position: relative;
-      width: 117%;
+      width: 100%;
       height: 100%;
-      margin-left: 19px;
       top: 0;
+      margin-left: 0px;
       @media only screen and (max-width: 992px) {
         width: 85%;
         padding: 0px 90px 0px 150px;
@@ -178,23 +187,32 @@
         width: 95%;
       }
     }
-    .bg-img img {
-      margin: 40px 38px;
-      position: absolute;
-      width: 364px;
-      animation-name: image-anim;
-      animation-duration: 3s;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-      @media only screen and (max-width: 992px){
-       position:absolute;
-       padding: 37px 0px 0px 150px;
-       width: 60%;
-}
-@media only screen and (max-width: 576px) {
-  padding: 0px 0px 0px 0px;
-}
     }
+     
+    
+    
+    .bg-img {
+      
+          margin-top: 20%;
+        img {
+          margin: 49px 91px;
+          position: absolute;
+          width: 364px;
+          animation-name: image-anim;
+          animation-duration: 3s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+          @media only screen and (max-width: 992px){
+          position:absolute;
+          padding: 37px 0px 0px 150px;
+          width: 60%;
+          }
+          @media only screen and (max-width: 576px) {
+            padding: 0px 0px 0px 0px;
+          }
+        }
+    }
+   
   }
 }
 
