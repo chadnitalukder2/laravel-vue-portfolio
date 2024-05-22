@@ -171,6 +171,18 @@
           margin-top: 30%;
           border-radius: 6px;
           overflow: hidden;
+        @media only screen and (max-width: 992px) {
+          width: 100%;
+          height: 400px;
+          margin-left: 50%;
+          padding: 0px 0px 0px 0px;
+          position: relative;
+        }
+        @media only screen and (max-width: 576px) {
+        padding: 0px 0px 0px 0px;
+        width: 100%;
+        height: 320px;
+      }
       img {
       position: relative;
       width: 100%;
@@ -178,13 +190,13 @@
       top: 0;
       margin-left: 0px;
       @media only screen and (max-width: 992px) {
-        width: 85%;
-        padding: 0px 90px 0px 150px;
+        width: 100%;
+        padding: 0px 0px 0px 0px;
         position: relative;
       }
       @media only screen and (max-width: 576px) {
         padding: 0px 0px 0px 0px;
-        width: 95%;
+        width: 100%;
       }
     }
     }
