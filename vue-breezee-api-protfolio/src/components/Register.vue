@@ -1,19 +1,24 @@
 <template>
      <div class="container">
         <div class="left_container">
-            <h1>Sign In</h1>
+            <h1>Sign Up</h1>
             <form >
-                
+                     <p for="email">User Name:</p>
+                    <input type="text" v-model="email" id="email" required placeholder="User Name" />
+
                     <p for="email">Email:</p>
                     <input type="email" v-model="email" id="email" required placeholder="Email" />
                
                     <p for="password">Password:</p>
                     <input type="password" v-model="password" id="password" required placeholder="Password" />
               
-                <button type="submit">Login</button>
+                   <p for="password">Confirmed Password:</p>
+                    <input type="password" v-model="password" id="password" required placeholder="Confirmed Password" />
+              
+                <button type="submit">Register </button>
             </form>
-            <div >
-                <a href="">Forgot Password?</a>
+            <div class="forgot" >
+                <router-link :to="{name: 'login'}">Login</router-link>
             </div>
         </div>
     </div>
@@ -35,7 +40,7 @@
         text-align: left;
         width: 60%;
         margin: 0 auto;
-        border-radius: 6px 0px 0px 6px;
+        border-radius: 6px ;
         h1{
             font-size: 25px;
             padding-bottom: 30px;
@@ -43,7 +48,7 @@
         }
       
             p{
-                color: black;
+                color: #101010d1;
                 font-size: 15px;
                 font-weight: 700;
                 padding: 20px 0px 10px 0px;
@@ -74,6 +79,17 @@
                 
             }
       
+    }
+     .forgot{
+        text-align: center;
+        a{
+            text-decoration: none;
+            font-size: 15px;
+            color: #000000b0;
+        }
+        a:hover{
+            color: #ff6b00;
+        }
     }
   
 }

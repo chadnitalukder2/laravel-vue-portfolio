@@ -1,4 +1,22 @@
 <script setup>
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+const form = ref({
+    email: '',
+    password : '',
+});
+
+const handleLogin = async () => {
+    let response = await axios.post("/login", {
+        email: form.value.email,
+        password: form.value.password,
+    })
+    console.log('response', response)
+    router.push("/");
+}
 
 </script>
 
@@ -6,24 +24,24 @@
     <div class="container">
         <div class="left_container">
             <h1>Sign In</h1>
-            <form >
+            <form @submit.prevent="handleLogin" >
                 
                     <p for="email">Email:</p>
-                    <input type="email" v-model="email" id="email" required placeholder="Email" />
+                    <input type="email" v-model="form.email" id="email" required placeholder="Email" />
                
                     <p for="password">Password:</p>
-                    <input type="password" v-model="password" id="password" required placeholder="Password" />
+                    <input type="password" v-model="form.password" id="password" required placeholder="Password" />
               
                 <button type="submit">Login</button>
             </form>
-            <div >
+            <div class="forgot" >
                 <a href="">Forgot Password?</a>
             </div>
         </div>
         <div class="right_container">
             <h1>Welcome to login</h1>
             <p>Don't have an account?</p>
-            <a href=""> Sign Up</a>
+            <router-link :to="{name: 'register'}">Sign Up</router-link>
         </div>
     </div>
 </template>
@@ -52,7 +70,7 @@
         }
       
             p{
-                color: black;
+                color: #101010d1;
                 font-size: 15px;
                 font-weight: 700;
                 padding: 20px 0px 10px 0px;
@@ -76,12 +94,12 @@
                     margin: 20px 0px;
                     width: 100%;
                     border-radius: 50px;
-                    border: #ff6b00;
+                    border: 1px solid #ff6b00;
                     background: #ff6b00 ;                   
                     color: white;
                     cursor: pointer;
-                
             }
+            
       
     }
     .right_container{
@@ -106,8 +124,26 @@
                 border-radius: 20px;
                 color: white;
                 border: 1px solid white;
+                transition: all .3s;
+        }
+        a:hover{
+            background: #fff;
+            color:#ff6b00;
+            border: 1px solid #ff6b00;
+
         }
     }
+    .forgot{
+        a{
+            text-decoration: none;
+            font-size: 15px;
+            color: #000000b0;
+        }
+        a:hover{
+            color: #ff6b00;
+        }
+    }
+
 }
 
 </style>
