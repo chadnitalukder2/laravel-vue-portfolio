@@ -1,21 +1,26 @@
-<script setup>
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
-import { useRouter } from 'vue-router';
-
-const router = useRouter();
-const form = ref({
-    email: '',
-    password : '',
-});
-
-const handleLogin = async () => {
-    let response = await axios.post("/login", {
-        email: form.value.email,
-        password: form.value.password,
-    })
-    console.log('response', response)
-    router.push("/");
+<script>
+export default {
+    data(){
+        return{
+            form:{
+                email: '',
+                password: ''
+            }
+        }
+    },
+    methods:{
+        handleLogin(){
+            this.$axios.post('http://localhost:8000/login', this.form)
+            .then(res => {
+                console.log(res.data);
+                localStorage.setItem('token', res.data.token);
+                this.$router.push({name: 'home'});
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        }
+    }
 }
 
 </script>
