@@ -1,21 +1,68 @@
 <script setup>
+import { useNotification } from "@kyvg/vue3-notification";
+const { notify } = useNotification();
+
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
+const errors = ref(null);
+const validation = ref({});
+
 const form = ref({
     email: '',
     password : '',
 });
 
+//---------------------------------------
+const clearValidationMessage = (field) => {
+  setTimeout(() => {
+    validation.value[field] = '';
+  }, 3000); // Set the timeout duration in milliseconds (e.g., 5000 for 5 seconds)
+}
+//----------------------------------------------
+const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+//----------------------------------------------
 const handleLogin = async () => {
-    let response = await axios.post("/login", {
-        email: form.value.email,
-        password: form.value.password,
-    })
-    console.log('response', response)
-    router.push("/");
+
+  if (form.value.email === "" || !validateEmail(form.value.email)) {
+    validation.value.email = "Email is required and must be a valid email address";
+    clearValidationMessage('email');
+  }
+  if (form.value.password === "" || form.value.password.length < 8) {
+    validation.value.password = "Password is required and must be at least 8 characters long";
+    clearValidationMessage('password');
+  } else {
+    await handleApiRequest();
+  }
+ 
+};
+//---------------------------------------------
+const handleApiRequest = async () => {
+
+    try {
+        let response = await axios.post('http://localhost:8000/login', {
+             email: form.value.email,
+            password: form.value.password,
+          } )
+          
+        localStorage.setItem("password", form.value.password);
+        localStorage.setItem("email", form.value.email);
+        localStorage.setItem("", form.value.email);
+        router.push('/');
+  
+   }catch (error) {
+    console.error(error.response.data);
+    // Handle login error
+    errors.value = error.response.data.message || 'An error occurred during login.';
+    // Clear previous validation messages
+    validation.value.email = ''; 
+    validation.value.password = '';
+    };
 }
 
 </script>
@@ -27,12 +74,15 @@ const handleLogin = async () => {
             <form @submit.prevent="handleLogin" >
                 
                     <p for="email">Email:</p>
-                    <input type="email" v-model="form.email" id="email" required placeholder="Email" />
+                    <input type="email" v-model="form.email" id="email"  placeholder="Email" />
+                    <p style="margin: 0px; color: red; font-size: 14px;">{{ validation.email }}</p>
                
                     <p for="password">Password:</p>
-                    <input type="password" v-model="form.password" id="password" required placeholder="Password" />
-              
-                <button type="submit">Login</button>
+                    <input type="password" v-model="form.password" id="password"  placeholder="Password" />
+                    <p style="margin: 0px; color: red; font-size: 14px;" >{{ validation.password }}</p>
+
+                    <label style="margin: 0px; color: red; font-size: 14px;" >{{ errors }}</label>
+                    <button type="submit">Login</button>
             </form>
             <div class="forgot" >
                 <a href="">Forgot Password?</a>

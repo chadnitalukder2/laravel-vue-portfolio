@@ -1,19 +1,55 @@
+<script setup>
+import { useNotification } from "@kyvg/vue3-notification";
+const { notify } = useNotification();
+
+  import { ref } from 'vue';
+  import axios from 'axios';
+  import { useRouter } from 'vue-router';
+  const router = useRouter();
+//-----------------------------------
+const form = ref({
+    name: '',
+    email: '',
+    password: '',
+    password_confirmation: ''
+  });
+  const validation = ref({});
+  //---------------------------------------------
+    //------------------------------------------
+  const handleApiRequest = async () => {
+    const response = await axios.post('http://localhost:8000/register', {
+      name:form.value.name,
+      email:form.value.email,
+      password:form.value.password,
+      password_confirmation:form.value.password_confirmation
+    }).then(() => {
+      notify({
+      title: "Registration Successful ",
+      type: "success",
+    });
+    })
+    console.log('response', response)
+    router.push("/login");
+  }
+  //-----------------------------------------
+</script>
+
 <template>
      <div class="container">
         <div class="left_container">
             <h1>Sign Up</h1>
-            <form >
+            <form @submit.prevent="handleApiRequest" method="post">
                      <p for="email">User Name:</p>
-                    <input type="text" v-model="email" id="email" required placeholder="User Name" />
+                    <input type="text" v-model="form.name" id="email" required placeholder="User Name" />
 
                     <p for="email">Email:</p>
-                    <input type="email" v-model="email" id="email" required placeholder="Email" />
+                    <input type="email" v-model="form.email" id="email" required placeholder="Email" />
                
                     <p for="password">Password:</p>
-                    <input type="password" v-model="password" id="password" required placeholder="Password" />
+                    <input type="password" v-model="form.password" id="password" required placeholder="Password" />
               
                    <p for="password">Confirmed Password:</p>
-                    <input type="password" v-model="password" id="password" required placeholder="Confirmed Password" />
+                    <input type="password" v-model="form.password_confirmation" id="password" required placeholder="Confirmed Password" />
               
                 <button type="submit">Register </button>
             </form>
@@ -24,9 +60,7 @@
     </div>
 </template>
 
-<script setup>
 
-</script>
 
 <style lang="scss" scoped>
 .container{

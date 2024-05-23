@@ -6,14 +6,6 @@ import Resume from './page/resume.vue';
 import Portfolio from './page/protfolio.vue';
 import Blog from './page/blog.vue';
 import Contact from './page/contact.vue';
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
-
-const user = ref();
-onMounted(async () => {
-    const data = await axios.get('/api/user');
-    console.log('data', data);
-})
 
 </script>
 

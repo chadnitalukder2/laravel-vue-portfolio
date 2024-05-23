@@ -1,6 +1,45 @@
 
 <script setup >
-     
+import {  onMounted, reactive } from 'vue';
+import axios from "axios";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const state = reactive({
+    loggedIn: false,
+    is_admin: false
+});
+//-----------------------------------------------------
+const handleLogout = async () => {
+    localStorage.removeItem('email');
+    localStorage.removeItem('password');
+    await axios.post('http://localhost:8000/logout');
+    state.loggedIn = false;
+    router.push({ name: 'login' });
+    // window.location.reload();
+};
+//----------------------------------------------------
+onMounted(async () => {
+  getUser();
+});
+//----------------------------------------
+
+const getUser = async () => {
+  await axios.get('api/user').then(response => {
+    if (response.status == 200) {
+      state.loggedIn = true;
+      if (response.data.role == 'admin') {
+        state.is_admin = true;
+
+      }
+    } else {
+      state.loggedIn = false;
+    }
+
+  }).catch(error => {
+    state.loggedIn = false
+  });
+}
 
 </script>
 
@@ -40,10 +79,10 @@
             <li><a href="#blog">BLOG</a></li>
             <span></span>
             <li><a href="#contact">CONTACT</a></li>
-            <li>
+            <li v-if="!state.loggedIn" >
                 <router-link :to="{name: 'login'}">LOGIN</router-link>
             </li>
-             <li>
+             <li  v-if="!state.loggedIn">
                 <router-link :to="{name: 'register'}">REGISTER</router-link>
             </li>
           </ul>
@@ -74,12 +113,21 @@
         <div class="navbar__contact navbar__menu">
           
             <ul>
-           <li>
+           <li  v-if="!state.loggedIn">
                 <router-link :to="{name: 'login'}">Login</router-link>
             </li>
-             <li>
+             <li  v-if="!state.loggedIn">
                 <router-link :to="{name: 'register'}">Register</router-link>
-            </li>      
+            </li>  
+             <li   v-if="state.loggedIn" >
+                    <button @click="handleLogout">
+                        Logout
+                    </button>
+            </li>    
+
+            <li>
+              <router-link v-if="state.is_admin" active-class="active" :to="{ name: 'home' }">Admin</router-link>
+            </li>
             </ul>
         </div>
       </div>
