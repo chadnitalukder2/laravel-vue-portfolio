@@ -9,7 +9,7 @@
         <div class="container">
           <div class="heading">
             <div class="sub-heading">
-              <img src="../../assets/img/orangeDot.png" alt="orange">
+              <img src="../assets/img/orangeDot.png" alt="orange">
               <p>My Blog</p>
             </div>
             <h2>LETEST BLOG</h2>
@@ -17,7 +17,7 @@
           <div class="blogs-container">
             <div class="card">
               <div class="image">
-                <img src="../../assets/img/blogOne.png" alt="one">
+                <img src="../assets/img/blogOne.png" alt="one">
                 <div class="hidden"></div>
               </div>
               <div class="card-body">
@@ -34,7 +34,7 @@
 
             <div class="card">
               <div class="image">
-                <img src="../../assets/img/blogTwo.png" alt="one">
+                <img src="../assets/img/blogTwo.png" alt="one">
                 <div class="hidden"></div>
               </div>
               <div class="card-body">
@@ -51,7 +51,7 @@
 
             <div class="card">
               <div class="image">
-                <img src="../../assets/img/blogThree.png" alt="one">
+                <img src="../assets/img/blogThree.png" alt="one">
                 <div class="hidden">gh</div>
               </div>
               <div class="card-body">

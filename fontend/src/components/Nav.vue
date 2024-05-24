@@ -16,7 +16,6 @@ const handleLogout = async () => {
     await axios.post('http://localhost:8000/logout');
     state.loggedIn = false;
     router.push({ name: 'login' });
-    // window.location.reload();
 };
 //----------------------------------------------------
 onMounted(async () => {
@@ -119,7 +118,7 @@ const getUser = async () => {
              <li  v-if="!state.loggedIn">
                 <router-link :to="{name: 'register'}">Register</router-link>
             </li>  
-             <li   v-if="state.loggedIn" >
+             <li   v-if="state.loggedIn" class="logout" >
                     <button @click="handleLogout">
                         Logout
                     </button>
@@ -280,6 +279,23 @@ const getUser = async () => {
         }
        
     }
+}
+
+.logout{
+  button{
+    cursor: pointer;
+    background: #f38e45e0;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    border: 1px solid white;
+    transition: all .3s;
+  }
+  button:hover{
+    background: #fff;
+    color: #f38e45e0;
+     border: 1px solid #f38e45e0;
+  }
 }
 
 //style common

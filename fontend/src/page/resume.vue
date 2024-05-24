@@ -10,7 +10,7 @@
 
           <div class="heading">
             <div class="sub-heading">
-              <img src="../../assets/img/orangeDot.png" alt="orange">
+              <img src="../assets/img/orangeDot.png" alt="orange">
               <p>My Resume</p>
             </div>
             <h2>10+ YEARS OF EXPERIENCE</h2>

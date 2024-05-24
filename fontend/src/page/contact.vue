@@ -9,7 +9,7 @@
         <div class="container">
           <div class="heading">
             <div class="sub-heading">
-              <img src="../../assets/img/orangeDot.png" alt="orange">
+              <img src="../assets/img/orangeDot.png" alt="orange">
               <p>My Contact</p>
             </div>
             <h2>I WANT TO HEAR FROM YOU</h2>

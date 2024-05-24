@@ -5,7 +5,7 @@ import home from "../components/Home.vue";
 const routes = [
   {
     path: "/",
-    name:'home',
+    name: "home",
     component: home,
   },
   {
@@ -17,6 +17,16 @@ const routes = [
     path: "/register",
     name: "register",
     component: () => import("../components/Register.vue"),
+  },
+  {
+    path: "/ForgotPassword",
+    name: "ForgotPassword",
+    component: () => import("../components/ForgotPassword.vue"),
+  },
+  {
+    path: "/ResetPassword",
+    name: "ResetPassword",
+    component: () => import("../components/ResetPassword.vue"),
   },
 ];
 

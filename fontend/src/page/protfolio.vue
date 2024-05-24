@@ -9,7 +9,7 @@
         <div class="container">
         <div class="heading">
           <div class="sub-heading">
-            <img src="../../assets/img/orangeDot.png" alt="orange">
+            <img src="../assets/img/orangeDot.png" alt="orange">
             <p>My portfolio</p>
           </div>
           <h2>VISIT MY PORTFOLIO</h2>
@@ -28,7 +28,7 @@
             <div class="items">
               <div class="hidden">
               </div>
-              <img src="../../assets/img/portfolioOne.png">
+              <img src="../assets/img/portfolioOne.png">
               <div class="info">
                 <p>Graphic Design</p>
                 <h3>The best way to impress your web</h3>
@@ -38,7 +38,7 @@
             <div class="items">
               <div class="hidden">
               </div>
-              <img src="../../assets/img/portfolioTwo.png">
+              <img src="../assets/img/portfolioTwo.png">
               <div class="info">
                 <p>Graphic Design</p>
                 <h3>The best way to impress your web</h3>
@@ -47,7 +47,7 @@
             <div class="items">
               <div class="hidden">
               </div>
-              <img src="../../assets/img/portfolioThree.png">
+              <img src="../assets/img/portfolioThree.png">
               <div class="info">
                 <p>Graphic Design</p>
                 <h3>The best way to impress your web</h3>
@@ -56,7 +56,7 @@
             <div class="items">
               <div class="hidden">
               </div>
-              <img src="../../assets/img/portfolioFour.png">
+              <img src="../assets/img/portfolioFour.png">
               <div class="info">
                 <p>Graphic Design</p>
                 <h3>The best way to impress your web</h3>
@@ -65,7 +65,7 @@
             <div class="items">
               <div class="hidden">
               </div>
-              <img src="../../assets/img/portfolioFive.png">
+              <img src="../assets/img/portfolioFive.png">
               <div class="info">
                 <p>Graphic Design</p>
                 <h3>The best way to impress your web</h3>
@@ -74,7 +74,7 @@
             <div class="items">
               <div class="hidden">
               </div>
-              <img src="../../assets/img/portfolioSix.png">
+              <img src="../assets/img/portfolioSix.png">
               <div class="info">
                 <p>Graphic Design</p>
                 <h3>The best way to impress your web</h3>
@@ -83,7 +83,7 @@
             <div class="items">
               <div class="hidden">
               </div>
-              <img src="../../assets/img/portfolioSeven.png">
+              <img src="../assets/img/portfolioSeven.png">
               <div class="info">
                 <p>Graphic Design</p>
                 <h3>The best way to impress your web</h3>
@@ -92,7 +92,7 @@
             <div class="items">
               <div class="hidden">
               </div>
-              <img src="../../assets/img/portfolioEight.png">
+              <img src="../assets/img/portfolioEight.png">
               <div class="info">
                 <p>Graphic Design</p>
                 <h3>The best way to impress your web</h3>
@@ -101,7 +101,7 @@
             <div class="items ">
               <div class="hidden">
               </div>
-              <img src="../../assets/img/portfolioTwo.png">
+              <img src="../assets/img/portfolioTwo.png">
               <div class="info">
                 <p>Graphic Design</p>
                 <h3>The best way to impress your web</h3>

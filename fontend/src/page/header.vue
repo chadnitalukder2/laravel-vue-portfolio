@@ -7,10 +7,10 @@
       <div class="header">
         <div class="header-left">
           <div class="up-banner">
-            <img src="../../assets/img/particleOne.png" alt="one" />
+            <img src="../assets/img/particleOne.png" alt="one" />
           </div>
           <div class="sub-heading">
-            <img src="../../assets/img/orangeDot.png" alt="orange" />
+            <img src="../assets/img/orangeDot.png" alt="orange" />
             <p>i am designer</p>
           </div>
 
@@ -41,16 +41,16 @@
 
           
           <div class="down-banner">
-            <img src="../../assets/img/particleTwo.png" alt="tow" />
+            <img src="../assets/img/particleTwo.png" alt="tow" />
           </div>
         </div>
 
         <div class="header-right">
           <div class="bg-img">
-            <img src="../../assets/img/homeNannerShape.png" alt="home" />
+            <img src="../assets/img/homeNannerShape.png" alt="home" />
           </div>
           <div class="image" style="display: flex; text-align: center;">
-            <img src="../../assets/img/nitesh1-removebg-preview.png" alt="nitesh" />
+            <img src="../assets/img/nitesh1-removebg-preview.png" alt="nitesh" />
           </div>
         </div>
       </div>

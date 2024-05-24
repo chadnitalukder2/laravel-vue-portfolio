@@ -85,7 +85,7 @@ const handleApiRequest = async () => {
                     <button type="submit">Login</button>
             </form>
             <div class="forgot" >
-                <a href="">Forgot Password?</a>
+                 <router-link :to="{name: 'ForgotPassword'}">Forgot Password?</router-link>
             </div>
         </div>
         <div class="right_container">

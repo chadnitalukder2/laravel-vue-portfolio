@@ -12,7 +12,7 @@
             <div class="heading">
 
               <div class="sub-heading">
-                <img src="../../assets/img/orangeDot.png" alt="one">
+                <img src="../assets/img/orangeDot.png" alt="one">
                 <p>My service</p>
               </div>
 
@@ -21,42 +21,42 @@
             <div class="service-grid">
 
               <div class="grid-1">
-                <img src="../../assets/img/serviceOne.png" alt="one">
+                <img src="../assets/img/serviceOne.png" alt="one">
                 <h3>UI/UX Design</h3>
                 <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
               </div>
               <div class="grid-1">
-                <img src="../../assets/img/serviceTwo.png" alt="one">
+                <img src="../assets/img/serviceTwo.png" alt="one">
                 <h3>Mobile App</h3>
                 <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
               </div>
               <div class="grid-1">
-                <img src="../../assets/img/serviceThree.png" alt="one">
+                <img src="../assets/img/serviceThree.png" alt="one">
                 <h3>Graphic Design</h3>
                 <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
               </div>
               <div class="grid-1">
-                <img src="../../assets/img/serviceFour.png" alt="one">
+                <img src="../assets/img/serviceFour.png" alt="one">
                 <h3>Web Developer</h3>
                 <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
               </div>
               <div class="grid-1">
-                <img src="../../assets/img/serviceFive.png" alt="one">
+                <img src="../assets/img/serviceFive.png" alt="one">
                 <h3>SEO Optimisation</h3>
                 <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
               </div>
               <div class="grid-1">
-                <img src="../../assets/img/serviceSix.png" alt="one">
+                <img src="../assets/img/serviceSix.png" alt="one">
                 <h3>WordPress Developer</h3>
                 <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
               </div>
               <div class="grid-1">
-                <img src="../../assets/img/serviceSeven.png" alt="one">
+                <img src="../assets/img/serviceSeven.png" alt="one">
                 <h3>App Development</h3>
                 <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
               </div>
               <div class="grid-1">
-                <img src="../../assets/img/serviceEight.png" alt="one">
+                <img src="../assets/img/serviceEight.png" alt="one">
                 <h3>Business Strategy</h3>
                 <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
               </div>

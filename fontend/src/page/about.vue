@@ -9,7 +9,7 @@
         <div class="about-left">
           <div class="photo">
           <div class="cover-img">
-          <img src="../../assets/img/nitesh1-removebg-preview.png" alt="nitesh" />
+          <img src="../assets/img/nitesh1-removebg-preview.png" alt="nitesh" />
           </div>
           <div class="hidden"></div>
         </div>
@@ -17,7 +17,7 @@
 
         <div class="about-right">
           <div class="sub-heading">
-            <img src="../../assets/img/orangeDot.png" alt="orange" />
+            <img src="../assets/img/orangeDot.png" alt="orange" />
             <p>About Me</p>
           </div>
           <h2>I Can Design Anything You Want</h2>
@@ -31,7 +31,7 @@
           <div class="description">
 
             <div class="complete">
-              <img class="one" src="../../assets/img/aboutIconOne.png" alt="one">
+              <img class="one" src="../assets/img/aboutIconOne.png" alt="one">
               <span>
               <h4 class="one-info">8+</h4>
              <h4>Complete Project</h4>
@@ -39,7 +39,7 @@
             </div>
           
             <div class="experience">
-              <img class="tow" src="../../assets/img/aboutIconTwo.png" alt="tow">
+              <img class="tow" src="../assets/img/aboutIconTwo.png" alt="tow">
               <span>
                 <h4 class="tow-info">0+</h4>
                 <h4> Year of experience</h4>
