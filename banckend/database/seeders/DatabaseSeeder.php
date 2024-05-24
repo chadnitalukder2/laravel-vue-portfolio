@@ -23,11 +23,13 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         // $this->call(AboutSeeder::class);
+        // $this->call(ExperienceSeeder::class);
         // $this->call(HeaderSeeder::class);
         // $this->call(ServiceSeeder::class);
         // $this->call(PortfolioSeeder::class);
         // $this->call(ContactSeeder::class);
         // $this->call(BlogSeeder::class);
         // $this->call(SettingSeeder::class);
+        
     }
 }
