@@ -13,6 +13,8 @@ const form = ref({
     email: route.query.email,
     token: route.params.token,
 });
+console.log('route', route);
+console.log('router', router)
 
 const handleResetPassword = async (form) => {
     try {

@@ -125,7 +125,7 @@ const getUser = async () => {
             </li>    
 
             <li>
-              <router-link v-if="state.is_admin" active-class="active" :to="{ name: 'home' }">Admin</router-link>
+              <router-link v-if="state.is_admin" active-class="active" :to="{ name: 'dashboard' }">Admin</router-link>
             </li>
             </ul>
         </div>
@@ -142,7 +142,7 @@ const getUser = async () => {
   background: var(--whitw-color);
   width: 100%;
   gap: 10px;
-  padding: 25px 60px;
+  padding: 2px 60px;
   @media only screen and (min-width: 1500px){
     padding:0px 290px ;
   }
