@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HeaderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::controller(HeaderController::class)->group(function () {
+    Route::get('/get_header_data', 'getHeaderData')->name('get_header_data');
+    Route::post('/add_header_data', 'addHeaderData')->name('add_header_data');
 });

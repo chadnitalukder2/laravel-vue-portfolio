@@ -1,14 +1,9 @@
 <template>
     <div class="side-bar-wrapper">
-        <!-- <router-link active-class="active" :to="{ name: 'dashboard' }">Dashboard</router-link>
-        <router-link active-class="active" :to="{ name: 'all-category' }">All Category</router-link>
-        <router-link active-class="active"  :to="{ name: 'all-brand' }">All Brand</router-link>
-        <router-link active-class="active"  :to="{ name: 'all-product' }">All Product</router-link>
-        <router-link active-class="active"  :to="{ name: 'all-order' }">All Order Item</router-link>
-        <router-link active-class="active"  :to="{ name: 'contact' }">Contact</router-link>
-        <router-link  active-class="active"  :to="{ name: 'all-user' }">All User</router-link> -->
-        <a href=""  >Portfolio</a>
-        <a href=""  >Portfolio</a>
+        <router-link active-class="active" :to="{ name: 'dashboard' }">Dashboard</router-link>
+        <router-link active-class="active" :to="{ name: 'all-header' }"> Header</router-link>
+     
+        
     </div>
 </template>
 
@@ -29,7 +24,7 @@
     flex-direction: column;
     width: 200px;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     border-right: 1px solid #EAECF0;
     height: 100vh;
     background: #fff5ef;
@@ -39,9 +34,10 @@
         text-decoration: none;
         font-weight: 500;
         font-size: 18px;
+         border: 1px solid #ff6b00;
         padding: 10px 15px;
         width: calc(100% - 30px);
-        color: #444;
+        color: #ff6b00;
         background: white;
         border-radius: 6px;
         box-shadow: 2px 2px 3px 2px #e3dfdf7a;

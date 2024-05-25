@@ -43,6 +43,24 @@ const routes = [
         component: () => import("../Admin/dashboard/dashboard.vue"),
         meta: { requiresAuth: true, adminAuthRequired: true },
       },
+      {
+        path: "/all-header",
+        name: "all-header",
+        component: () => import("../Admin/Header/all_header.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+      {
+        path: "/add-header",
+        name: "add-header",
+        component: () => import("../Admin/Header/add_header.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+      {
+        path: "/edit-header/:id",
+        name: "edit-header",
+        component: () => import("../Admin/Header/Edit_header.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
     ],
   },
   //===============================================
