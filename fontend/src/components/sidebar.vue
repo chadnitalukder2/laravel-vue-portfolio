@@ -2,6 +2,7 @@
     <div class="side-bar-wrapper">
         <router-link active-class="active" :to="{ name: 'dashboard' }">Dashboard</router-link>
         <router-link active-class="active" :to="{ name: 'all-header' }"> Header</router-link>
+        <router-link active-class="active" :to="{ name: 'All-about' }"> About</router-link>
      
         
     </div>
@@ -33,9 +34,10 @@
     a {
         text-decoration: none;
         font-weight: 500;
-        font-size: 18px;
-         border: 1px solid #ff6b00;
+        font-size: 15px;
+        border: 1px solid #ff6b00;
         padding: 10px 15px;
+        text-align: center;
         width: calc(100% - 30px);
         color: #ff6b00;
         background: white;
@@ -44,7 +46,7 @@
         &.active {
             background: #ff6b00;
             color: #fff;
-            border-radius: 8px;
+            border-radius: 6px;
         }
     }
 }

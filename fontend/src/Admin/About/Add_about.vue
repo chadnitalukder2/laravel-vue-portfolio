@@ -2,32 +2,16 @@
 import { ref, onMounted } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
-import { useRoute } from "vue-router";
 const router = useRouter();
-const route = useRoute();
 //---------------------------------------------------
 const form = ref([]);
 const image = [];
-
-onMounted(async () => {
-  editHeaderData();
-});
-
-const editHeaderData = async () => {
-    const id = route.params.id;
-  let response = await axios.get(`/api/edit_header_data/${id}`);
-    form.value = response.data.allData;
-
-    console.log(form.value, 'value')
-   
-};
 
 const handleFileChange = async (event) => {
   image.value = event.target.files[0];
 };
 
-const updateHeaderData = async () => {
-   let id = route.params.id;
+const addProduct = async () => {
   const formData = new FormData();
   formData.append("title", form.value.title);
   formData.append("short_title", form.value.short_title);
@@ -35,12 +19,9 @@ const updateHeaderData = async () => {
   formData.append("image", image.value);
 
   console.log({ formData });
-    let response = await axios.post(`/api/update_header_data/${id}`, formData).then(() => {
-      router.push("/all-header");
-  })
-
+  let response = await axios.post("/api/add_header_data", formData);
+  router.push("/all-header");
 };
-
 
 </script>
 
@@ -51,8 +32,8 @@ const updateHeaderData = async () => {
         All Data
         </router-link>
     </div>
-    <form @submit.prevent="updateHeaderData" enctype="multipart/form-data">
-      <h1>Update Header Data</h1>
+    <form @submit.prevent="addProduct" enctype="multipart/form-data">
+      <h1>Add Header Data</h1>
       <div class="container">
         <label for="uname"><b>Title </b></label>
         <input
@@ -82,7 +63,7 @@ const updateHeaderData = async () => {
 
 
         <br /><br />
-        <button type="submit">Update Data</button>
+        <button type="submit">Add Data</button>
       </div>
     </form>
   </div>
@@ -124,7 +105,7 @@ textarea,
 .input_wrapper {
   width: 100%;
   padding: 12px 20px;
-  margin: 10px 0px 22px 0px;
+  margin: 12px 0;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;

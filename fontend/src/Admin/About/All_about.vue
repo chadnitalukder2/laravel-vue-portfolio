@@ -4,15 +4,15 @@ import { ref , onMounted} from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
-const headerData = ref([]);
+const abouts = ref([]);
 
 onMounted(async () => {
-  getHeaderData();
+  getAbout();
 });
 
-const getHeaderData = async () => {
-  let response = await axios.get("/api/get_header_data");
-    headerData.value = response.data.allData;
+const getAbout = async () => {
+  let response = await axios.get("/api/get_about");
+    abouts.value = response.data.abouts;
 };
 
 
@@ -29,16 +29,18 @@ const getHeaderData = async () => {
       <h1>All Header</h1>
       <table id="customers">
         <tr>
-          <th ># ID</th>
+          <th>#ID</th>
           <th>Image </th>
           <th>Title </th>
           <th>Short Title</th>
-          <th>Short Desc</th>
+          <th>Description</th>
+          <th>Total Project</th>
+          <th>Year Experience</th>
           <th>Action</th>
         </tr>
-        <tbody  v-for="item in headerData" :key="item.id">
+        <tbody  v-for="item in abouts" :key="item.id">
           <tr>
-            <td># {{ item.id }}</td>
+            <td>{{ item.id }}</td>
             <td style="width: 70px; height: 60px">
               <img
                  :src="item.image"
@@ -47,7 +49,9 @@ const getHeaderData = async () => {
             </td>
             <td> {{ item.title }}</td>
             <td> {{ item.short_title }}</td>
-            <td> {{ item.short_desc }}</td>
+            <td> {{ item.description }}</td>
+             <td> {{ item.complete_project }}</td>
+              <td> {{ item.year_experience }}</td>
             <td>
             <router-link :to="{ name: 'edit-header', params: { id: item.id } }">Edit</router-link>
             </td>

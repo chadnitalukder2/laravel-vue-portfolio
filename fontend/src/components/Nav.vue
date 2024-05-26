@@ -284,7 +284,7 @@ const getUser = async () => {
 .logout{
   button{
     cursor: pointer;
-    background: #f38e45e0;
+    background: #ff6b00;
     padding: 10px 20px;
     border-radius: 20px;
     color: white;
@@ -293,8 +293,8 @@ const getUser = async () => {
   }
   button:hover{
     background: #fff;
-    color: #f38e45e0;
-     border: 1px solid #f38e45e0;
+    color: #ff6b00;
+     border: 1px solid #ff6b00;
   }
 }
 

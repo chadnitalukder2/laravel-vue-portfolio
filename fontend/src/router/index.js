@@ -61,6 +61,24 @@ const routes = [
         component: () => import("../Admin/Header/Edit_header.vue"),
         meta: { requiresAuth: true, adminAuthRequired: true },
       },
+      {
+        path: "/All-about",
+        name: "All-about",
+        component: () => import("../Admin/About/All_about.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+      {
+        path: "/Add-about",
+        name: "Add-about",
+        component: () => import("../Admin/About/Add_about.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+      {
+        path: "/edit-about/:id",
+        name: "edit-about",
+        component: () => import("../Admin/About/edit_about.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
     ],
   },
   //===============================================

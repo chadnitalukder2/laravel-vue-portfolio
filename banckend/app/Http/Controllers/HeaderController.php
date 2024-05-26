@@ -40,4 +40,25 @@ class HeaderController extends Controller
             'message' => 'Header Data added successfully'
         ]);
     }//End Method
+
+    public function editHeaderData($id){
+        $allData = Header::where('id', $id)->first();
+        return response()->json([
+            'allData' => $allData
+        ], 200);
+    }//End Method
+
+    public function updateHeaderData(Request $request, $id){
+        $allData = Header::where('id' , $id)->first();
+
+        $imagePath = $request->file('image')->store('header_img', 'public');
+        $imagePath = asset('storage/' . $imagePath);
+
+        $allData->update(['title' => $request->title,
+            'short_title' => $request->short_title,
+            'short_desc' => $request->short_desc,
+            'image' =>  $imagePath,
+            'updated_at' => Carbon::now(),     
+        ]);
+    }//End Method
 }
