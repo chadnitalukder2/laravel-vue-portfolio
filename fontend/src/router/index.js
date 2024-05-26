@@ -115,6 +115,25 @@ const routes = [
         component: () => import("../Admin/portfolio/edit_portfolio.vue"),
         meta: { requiresAuth: true, adminAuthRequired: true },
       },
+
+      {
+        path: "/all-blog",
+        name: "all-blog",
+        component: () => import("../Admin/Blog/all_blog.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+      {
+        path: "/add-blog",
+        name: "add-blog",
+        component: () => import("../Admin/Blog/add_blog.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+      {
+        path: "/edit-blog/:id",
+        name: "edit-blog",
+        component: () => import("../Admin/Blog/edit_blog.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
     ],
   },
   //===============================================
