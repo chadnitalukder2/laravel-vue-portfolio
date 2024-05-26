@@ -38,7 +38,7 @@
         border: 1px solid #ff6b00;
         padding: 10px 15px;
         text-align: center;
-        width: calc(100% - 30px);
+        width: calc(100% - 15px);
         color: #ff6b00;
         background: white;
         border-radius: 6px;

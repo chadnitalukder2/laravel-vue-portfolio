@@ -11,16 +11,18 @@ const handleFileChange = async (event) => {
   image.value = event.target.files[0];
 };
 
-const addProduct = async () => {
+const addAbout = async () => {
   const formData = new FormData();
   formData.append("title", form.value.title);
   formData.append("short_title", form.value.short_title);
-  formData.append("short_desc", form.value.short_desc);
+  formData.append("description", form.value.description);
+  formData.append("complete_project", form.value.complete_project);
+    formData.append("year_experience", form.value.year_experience);
   formData.append("image", image.value);
 
   console.log({ formData });
-  let response = await axios.post("/api/add_header_data", formData);
-  router.push("/all-header");
+  let response = await axios.post("/api/add_about", formData);
+  router.push("/All-about");
 };
 
 </script>
@@ -28,12 +30,12 @@ const addProduct = async () => {
 <template>
   <div style=" background: rgba(245, 245, 247, 0.5019607843); ">
     <div class="btn" >
-        <router-link :to="{ name: 'all-header' }" >
-        All Data
+        <router-link :to="{ name: 'All-about' }" >
+        All About Data
         </router-link>
     </div>
-    <form @submit.prevent="addProduct" enctype="multipart/form-data">
-      <h1>Add Header Data</h1>
+    <form @submit.prevent="addAbout" enctype="multipart/form-data">
+      <h1>Add About Data</h1>
       <div class="container">
         <label for="uname"><b>Title </b></label>
         <input
@@ -48,9 +50,21 @@ const addProduct = async () => {
           type="text"
           placeholder="short title"
         />
+        <label for="uname"><b>Total Project</b></label>
+        <input
+          v-model="form.complete_project"
+          type="number"
+          placeholder="Total Project "
+        />
+        <label for="uname"><b>Year Experience </b></label>
+        <input
+          v-model="form.year_experience"
+          type="number"
+          placeholder="Year Experience"
+        />
 
         <label for="uname"><b> Short Description</b></label>
-        <textarea v-model="form.short_desc" type="text" placeholder="" rows="3"></textarea>
+        <textarea v-model="form.description" type="text" placeholder="" rows="3"></textarea>
 
         <label for="psw"><b> Image</b></label>
         <input
@@ -105,7 +119,7 @@ textarea,
 .input_wrapper {
   width: 100%;
   padding: 12px 20px;
-  margin: 12px 0;
+  margin: 10px 0px 22px 0px;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;

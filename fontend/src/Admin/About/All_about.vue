@@ -21,12 +21,12 @@ const getAbout = async () => {
 <template>
   <div class="container">
     <div class="table-box" >
-      <div class="btn" v-if="headerData == ''">
-          <router-link :to="{ name: 'add-header' }" >
-            Add Data
+      <div class="btn" v-if=" !abouts == ''">
+          <router-link :to="{ name: 'Add-about' }" >
+            Add About
           </router-link>
       </div>
-      <h1>All Header</h1>
+      <h1>All About Data</h1>
       <table id="customers">
         <tr>
           <th>#ID</th>
@@ -53,7 +53,7 @@ const getAbout = async () => {
              <td> {{ item.complete_project }}</td>
               <td> {{ item.year_experience }}</td>
             <td>
-            <router-link :to="{ name: 'edit-header', params: { id: item.id } }">Edit</router-link>
+            <router-link :to="{ name: 'edit-about', params: { id: item.id } }">Edit</router-link>
             </td>
           </tr>
         </tbody>

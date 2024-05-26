@@ -30,7 +30,7 @@ Route::controller(HeaderController::class)->group(function () {
 
 Route::controller(AboutController::class)->group(function () {
     Route::get('/get_about', 'getAbout')->name('get_about');
-    Route::post('/add_header_data', 'addHeaderData')->name('add_header_data');
+    Route::post('/add_about', 'addAbout')->name('add_about');
     Route::get('/edit_header_data/{id}', 'editHeaderData')->name('edit_header_data');
     Route::post('/update_header_data/{id}', 'updateHeaderData')->name('update_header_data');
 });

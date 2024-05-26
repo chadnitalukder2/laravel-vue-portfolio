@@ -11,7 +11,7 @@ const handleFileChange = async (event) => {
   image.value = event.target.files[0];
 };
 
-const addProduct = async () => {
+const addHeader = async () => {
   const formData = new FormData();
   formData.append("title", form.value.title);
   formData.append("short_title", form.value.short_title);
@@ -32,7 +32,7 @@ const addProduct = async () => {
         All Data
         </router-link>
     </div>
-    <form @submit.prevent="addProduct" enctype="multipart/form-data">
+    <form @submit.prevent="addHeader" enctype="multipart/form-data">
       <h1>Add Header Data</h1>
       <div class="container">
         <label for="uname"><b>Title </b></label>
@@ -105,7 +105,7 @@ textarea,
 .input_wrapper {
   width: 100%;
   padding: 12px 20px;
-  margin: 12px 0;
+  margin: 10px 0px 22px 0px;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
