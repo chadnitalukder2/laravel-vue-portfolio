@@ -9,10 +9,12 @@ use Illuminate\Http\Request;
 class HeaderController extends Controller
 {
     public function getHeaderData(){
+        $headerData = Header::first();
         $allData = Header::all();
 
         return response()->json([
-            'allData' => $allData
+            'allData' => $allData,
+            'headerData' => $headerData
         ], 200);
         return $allData;
     }//End Method

@@ -29,7 +29,7 @@ const getHeaderData = async () => {
       <h1>All Header</h1>
       <table id="customers">
         <tr>
-          <th ># ID</th>
+          <th >#ID</th>
           <th>Image </th>
           <th>Title </th>
           <th>Short Title</th>

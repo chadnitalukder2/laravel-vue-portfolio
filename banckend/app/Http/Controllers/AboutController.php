@@ -10,8 +10,10 @@ class AboutController extends Controller
 {
     public function getAbout(){
         $abouts = About::all();
+        $about = About::first();
         return response()->json([
-            'abouts' => $abouts
+            'abouts' => $abouts,
+            'about' => $about
         ], 200);
         return $abouts;
     }//End Method

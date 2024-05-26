@@ -1,5 +1,26 @@
-<script setup> 
-    
+<script setup>
+import axios from "axios";
+import { ref , onMounted} from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const portfolio = ref([]);
+
+onMounted(async () => {
+  getPortfolio();
+});
+
+const getPortfolio = async () => {
+  let response = await axios.get("/api/get_portfolio");
+    portfolio.value = response.data.portfolio;
+};
+
+const deletePortfolio = (id) => {
+  axios.get(`/api/delete_portfolio/${id}`).then(() => {
+    getPortfolio();
+  });
+};
+
 </script>
 
 <template>
@@ -25,91 +46,17 @@
             <button type="button">Web Design</button>
           </div>
           <div class="portpoli-massonary">
-            <div class="items">
+            
+            <div class="items " v-for="item in portfolio" :key="item.id">
               <div class="hidden">
               </div>
-              <img src="../assets/img/portfolioOne.png">
+              <img :src="item.image">
               <div class="info">
-                <p>Graphic Design</p>
-                <h3>The best way to impress your web</h3>
-              </div>
-              
-            </div>
-            <div class="items">
-              <div class="hidden">
-              </div>
-              <img src="../assets/img/portfolioTwo.png">
-              <div class="info">
-                <p>Graphic Design</p>
-                <h3>The best way to impress your web</h3>
-              </div>
-            </div>
-            <div class="items">
-              <div class="hidden">
-              </div>
-              <img src="../assets/img/portfolioThree.png">
-              <div class="info">
-                <p>Graphic Design</p>
-                <h3>The best way to impress your web</h3>
-              </div>
-            </div>
-            <div class="items">
-              <div class="hidden">
-              </div>
-              <img src="../assets/img/portfolioFour.png">
-              <div class="info">
-                <p>Graphic Design</p>
-                <h3>The best way to impress your web</h3>
-              </div>
-            </div>
-            <div class="items">
-              <div class="hidden">
-              </div>
-              <img src="../assets/img/portfolioFive.png">
-              <div class="info">
-                <p>Graphic Design</p>
-                <h3>The best way to impress your web</h3>
-              </div>
-            </div>
-            <div class="items">
-              <div class="hidden">
-              </div>
-              <img src="../assets/img/portfolioSix.png">
-              <div class="info">
-                <p>Graphic Design</p>
-                <h3>The best way to impress your web</h3>
-              </div>
-            </div>
-            <div class="items">
-              <div class="hidden">
-              </div>
-              <img src="../assets/img/portfolioSeven.png">
-              <div class="info">
-                <p>Graphic Design</p>
-                <h3>The best way to impress your web</h3>
-              </div>
-            </div>
-            <div class="items">
-              <div class="hidden">
-              </div>
-              <img src="../assets/img/portfolioEight.png">
-              <div class="info">
-                <p>Graphic Design</p>
-                <h3>The best way to impress your web</h3>
-              </div>
-            </div>
-            <div class="items ">
-              <div class="hidden">
-              </div>
-              <img src="../assets/img/portfolioTwo.png">
-              <div class="info">
-                <p>Graphic Design</p>
-                <h3>The best way to impress your web</h3>
+                <p>{{ item.title }}</p>
+                <h3>{{ item.short_title }}</h3>
               </div>
             </div>
            
-            
-
           </div>
 
         </div>

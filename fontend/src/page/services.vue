@@ -1,6 +1,28 @@
-<script setup> 
-    
+<script setup>
+import axios from "axios";
+import { ref , onMounted} from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const services = ref([]);
+
+onMounted(async () => {
+  getService();
+});
+
+const getService = async () => {
+  let response = await axios.get("/api/get_service");
+    services.value = response.data.services;
+};
+
+const deleteService = (id) => {
+  axios.get(`/api/delete_service/${id}`).then(() => {
+    getService();
+  });
+};
+
 </script>
+
 
 <template>
     <div>
@@ -20,46 +42,13 @@
             </div>
             <div class="service-grid">
 
-              <div class="grid-1">
-                <img src="../assets/img/serviceOne.png" alt="one">
-                <h3>UI/UX Design</h3>
-                <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
+             
+              <div class="grid-1" v-for="item in services" :key="item.id">
+                <img :src="item.image" alt="one" width="60px" height="60px">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.short_title }}</p>
               </div>
-              <div class="grid-1">
-                <img src="../assets/img/serviceTwo.png" alt="one">
-                <h3>Mobile App</h3>
-                <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
-              </div>
-              <div class="grid-1">
-                <img src="../assets/img/serviceThree.png" alt="one">
-                <h3>Graphic Design</h3>
-                <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
-              </div>
-              <div class="grid-1">
-                <img src="../assets/img/serviceFour.png" alt="one">
-                <h3>Web Developer</h3>
-                <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
-              </div>
-              <div class="grid-1">
-                <img src="../assets/img/serviceFive.png" alt="one">
-                <h3>SEO Optimisation</h3>
-                <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
-              </div>
-              <div class="grid-1">
-                <img src="../assets/img/serviceSix.png" alt="one">
-                <h3>WordPress Developer</h3>
-                <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
-              </div>
-              <div class="grid-1">
-                <img src="../assets/img/serviceSeven.png" alt="one">
-                <h3>App Development</h3>
-                <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
-              </div>
-              <div class="grid-1">
-                <img src="../assets/img/serviceEight.png" alt="one">
-                <h3>Business Strategy</h3>
-                <p>Hen our power of choice is untrammelled and when nothing prevents our being able</p>
-              </div>
+            
 
             </div>
           </div>

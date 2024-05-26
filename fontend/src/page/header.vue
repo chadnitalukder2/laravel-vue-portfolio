@@ -1,5 +1,21 @@
 <script setup>
-   
+import axios from "axios";
+import { ref , onMounted} from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const headerData = ref([]);
+
+onMounted(async () => {
+  getHeaderData();
+});
+
+const getHeaderData = async () => {
+  let response = await axios.get("/api/get_header_data");
+    headerData.value = response.data.headerData;
+};
+
+
 </script>
 
 <template>
@@ -11,12 +27,12 @@
           </div>
           <div class="sub-heading">
             <img src="../assets/img/orangeDot.png" alt="orange" />
-            <p>i am designer</p>
+            <p>{{ headerData.title }}</p>
           </div>
 
           <div class="animate-heading">
             <h1>
-              Creative Design and Web
+              {{ headerData.short_title  }}
               <span class="wrapper">
                 <b class="visible">Solution</b>
                 <b class="hidden">Design</b>
@@ -25,10 +41,7 @@
           </div>
           <div class="info">
             <p>
-              Nam libero tempore, cum soluta nobis est eligendi optio cumque
-              nihil impedit quo minus id quod maxime placeat facere possimus,
-              omnis voluptas assumenda est, omnis dolor repellendus. Temporibus
-              autem quibusdam et.
+              {{ headerData.short_desc }}
             </p>
           </div>
           
@@ -50,7 +63,7 @@
             <img src="../assets/img/homeNannerShape.png" alt="home" />
           </div>
           <div class="image" style="display: flex; text-align: center;">
-            <img src="../assets/img/nitesh1-removebg-preview.png" alt="nitesh" />
+            <img :src=" headerData.image " alt="nitesh" />
           </div>
         </div>
       </div>

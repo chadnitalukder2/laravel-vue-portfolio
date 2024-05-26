@@ -1,6 +1,23 @@
-<script setup> 
-    
+<script setup>
+import axios from "axios";
+import { ref , onMounted} from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const abouts = ref([]);
+
+onMounted(async () => {
+  getAbout();
+});
+
+const getAbout = async () => {
+  let response = await axios.get("/api/get_about");
+    abouts.value = response.data.about;
+};
+
+
 </script>
+
 
 <template>
      <div>
@@ -9,7 +26,7 @@
         <div class="about-left">
           <div class="photo">
           <div class="cover-img">
-          <img src="../assets/img/nitesh1-removebg-preview.png" alt="nitesh" />
+          <img :src="abouts.image " alt="nitesh" />
           </div>
           <div class="hidden"></div>
         </div>
@@ -18,22 +35,18 @@
         <div class="about-right">
           <div class="sub-heading">
             <img src="../assets/img/orangeDot.png" alt="orange" />
-            <p>About Me</p>
+            <p>{{ abouts.title }}</p>
           </div>
-          <h2>I Can Design Anything You Want</h2>
+          <h2>{{ abouts.short_title }}</h2>
           <p class="info">
-            Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-            impedit quo minus id quod maxime placeat facere possimus, omnis
-            voluptas assumenda est, omnis dolor repellendus. Temporibus autem
-            quibusdam et aut officiis. Nam libero tempore, cum soluta nobis est
-            eligendi optio cumque nihil impedit.
+           {{ abouts.description }}
           </p>
           <div class="description">
 
             <div class="complete">
               <img class="one" src="../assets/img/aboutIconOne.png" alt="one">
               <span>
-              <h4 class="one-info">8+</h4>
+              <h4 class="one-info">{{abouts.complete_project}}+</h4>
              <h4>Complete Project</h4>
              </span>
             </div>
@@ -41,7 +54,7 @@
             <div class="experience">
               <img class="tow" src="../assets/img/aboutIconTwo.png" alt="tow">
               <span>
-                <h4 class="tow-info">0+</h4>
+                <h4 class="tow-info">{{abouts.year_experience}}+</h4>
                 <h4> Year of experience</h4>
               </span>
             </div>
