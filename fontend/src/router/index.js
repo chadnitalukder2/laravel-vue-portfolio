@@ -79,6 +79,24 @@ const routes = [
         component: () => import("../Admin/About/edit_about.vue"),
         meta: { requiresAuth: true, adminAuthRequired: true },
       },
+      {
+        path: "/all-service",
+        name: "all-service",
+        component: () => import("../Admin/Service/all_service.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+      {
+        path: "/add-service",
+        name: "add-service",
+        component: () => import("../Admin/Service/add_service.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+      {
+        path: "/edit-service/:id",
+        name: "edit-service",
+        component: () => import("../Admin/Service/edit_service.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
     ],
   },
   //===============================================

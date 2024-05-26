@@ -17,7 +17,6 @@ class ServiceFactory extends Factory
     public function definition()
     {
         return [
-            'heading' => $this->faker->sentence,
             'title' => $this->faker->sentence,
             'short_title' => $this->faker->sentence(3),
             'image' => $this->faker->imageUrl(),

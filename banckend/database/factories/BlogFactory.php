@@ -17,7 +17,6 @@ class BlogFactory extends Factory
     public function definition()
     {
         return [
-            'heading' => $this->faker->sentence,
             'title' => $this->faker->sentence,
             'image' => $this->faker->imageUrl(),
         ];

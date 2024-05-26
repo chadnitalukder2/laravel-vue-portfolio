@@ -43,4 +43,28 @@ class AboutController extends Controller
             'message' => 'About Data added successfully'
         ]);
     }//End Method
+
+    public function editAbout(Request $request ,$id){
+        $abouts = About::where('id', $id)->first();
+        return response()->json([
+            'abouts' => $abouts
+        ], 200);
+    }//End Method
+
+    public function updateAbout(Request $request, $id){
+        $allData = About::where('id', $id)->first();
+
+        $imagePath = $request->file('image')->store('about_img', 'public');
+        $imagePath = asset('storage/' . $imagePath);
+
+        $allData->update([
+            'title' => $request->title,
+            'short_title' => $request->short_title,
+            'description' => $request->description,
+            'complete_project' => $request->complete_project,
+            'year_experience' => $request->year_experience,
+            'image' =>  $imagePath,
+            'updated_at' => Carbon::now(),
+        ]);
+    }//End Method
 }

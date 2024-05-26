@@ -4,41 +4,43 @@ import { ref , onMounted} from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
-const abouts = ref([]);
+const services = ref([]);
 
 onMounted(async () => {
-  getAbout();
+  getService();
 });
 
-const getAbout = async () => {
-  let response = await axios.get("/api/get_about");
-    abouts.value = response.data.abouts;
+const getService = async () => {
+  let response = await axios.get("/api/get_service");
+    services.value = response.data.services;
 };
 
+const deleteService = (id) => {
+  axios.get(`/api/delete_service/${id}`).then(() => {
+    getService();
+  });
+};
 
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" style="flex: auto;">
     <div class="table-box" >
-      <div class="btn" v-if=" abouts == ''">
-          <router-link :to="{ name: 'Add-about' }" >
-            Add About
+      <div class="btn" >
+          <router-link :to="{ name: 'add-service' }" >
+            Add Service
           </router-link>
       </div>
-      <h1>All About Data</h1>
+      <h1>All Service Data</h1>
       <table id="customers">
         <tr>
           <th>#ID</th>
           <th>Image </th>
           <th>Title </th>
           <th>Short Title</th>
-          <th>Description</th>
-          <th>Total Project</th>
-          <th>Year Experience</th>
           <th>Action</th>
         </tr>
-        <tbody  v-for="item in abouts" :key="item.id">
+        <tbody  v-for="item in services" :key="item.id">
           <tr>
             <td>{{ item.id }}</td>
             <td style="width: 70px; height: 60px">
@@ -49,11 +51,9 @@ const getAbout = async () => {
             </td>
             <td> {{ item.title }}</td>
             <td> {{ item.short_title }}</td>
-            <td> {{ item.description }}</td>
-             <td> {{ item.complete_project }}</td>
-              <td> {{ item.year_experience }}</td>
             <td>
-            <router-link :to="{ name: 'edit-about', params: { id: item.id } }">Edit</router-link>
+            <span  @click="deleteService(item.id)" style="background: red; margin-right: 5px; cursor: pointer;">Delete</span>
+            <router-link :to="{ name: 'edit-service', params: { id: item.id } }">Edit</router-link>
             </td>
           </tr>
         </tbody>
@@ -152,7 +152,7 @@ table {
   color: #444;
 }
 td{
-    a{
+span, a{
         text-decoration: none;
         background: skyblue;
         padding: 6px 12px;

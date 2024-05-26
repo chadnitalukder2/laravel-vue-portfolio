@@ -17,7 +17,7 @@ const addAbout = async () => {
   formData.append("short_title", form.value.short_title);
   formData.append("description", form.value.description);
   formData.append("complete_project", form.value.complete_project);
-    formData.append("year_experience", form.value.year_experience);
+  formData.append("year_experience", form.value.year_experience);
   formData.append("image", image.value);
 
   console.log({ formData });
@@ -64,7 +64,7 @@ const addAbout = async () => {
         />
 
         <label for="uname"><b> Short Description</b></label>
-        <textarea v-model="form.description" type="text" placeholder="" rows="3"></textarea>
+        <textarea v-model="form.description" type="text" placeholder="description" rows="5"></textarea>
 
         <label for="psw"><b> Image</b></label>
         <input

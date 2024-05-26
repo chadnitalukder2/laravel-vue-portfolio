@@ -17,7 +17,6 @@ class PortfolioFactory extends Factory
     public function definition()
     {
         return [
-            'heading' => $this->faker->sentence,
             'title' => $this->faker->sentence(1),
             'short_title' => $this->faker->sentence(2),
             'image' => $this->faker->imageUrl(640, 480, 'portfolio', true)

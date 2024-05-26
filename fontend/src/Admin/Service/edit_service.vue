@@ -10,34 +10,27 @@ const form = ref([]);
 const image = [];
 
 onMounted(async () => {
-  editAbout();
+  editService();
 });
-const editAbout = async () => {
+const editService = async () => {
     const id = route.params.id;
-  let response = await axios.get(`/api/edit_about/${id}`);
-    form.value = response.data.abouts;
-
-    console.log(form.value, 'value')
-   
+  let response = await axios.get(`/api/edit_service/${id}`);
+    form.value = response.data.services;
 };
 
 const handleFileChange = async (event) => {
   image.value = event.target.files[0];
 };
 
-const updateAbout = async () => {
-   let id = route.params.id;
-  const formData = new FormData();
-  formData.append("title", form.value.title);
-  formData.append("short_title", form.value.short_title);
-  formData.append("description", form.value.description);
-  formData.append("complete_project", form.value.complete_project);
-  formData.append("year_experience", form.value.year_experience);
-  formData.append("image", image.value);
-
-
-    let response = await axios.post(`/api/update_about/${id}`, formData).then(() => {
-      router.push("/All-about");
+const updateService = async () => {
+    let id = route.params.id;
+    const formData = new FormData();
+    formData.append("title", form.value.title);
+    formData.append("short_title", form.value.short_title);
+    formData.append("image", image.value);
+  
+    let response = await axios.post(`/api/update_service/${id}`, formData).then(() => {
+      router.push("/all-service");
   })
 
 };
@@ -46,43 +39,25 @@ const updateAbout = async () => {
 </script>
 
 <template>
-  <div style=" background: rgba(245, 245, 247, 0.5019607843); ">
+  <div style=" background: rgba(245, 245, 247, 0.5019607843);  flex: auto;">
     <div class="btn" >
-        <router-link :to="{ name: 'All-about' }" >
-        All About Data
+        <router-link :to="{ name: 'all-service' }" >
+         All Service Data
         </router-link>
     </div>
-    <form @submit.prevent="updateAbout" enctype="multipart/form-data">
-      <h1>Update About Data</h1>
+    <form @submit.prevent="updateService"  enctype="multipart/form-data">
+      <h1>Update Service Data</h1>
       <div class="container">
-        <label for="uname"><b>Title </b></label>
+         <label for="uname"><b>Title </b></label>
         <input
           v-model="form.title"
           type="text"
           placeholder="title "
         />
 
-        <label for="uname"><b>Short Title</b></label>
-        <input
-          v-model="form.short_title"
-          type="text"
-          placeholder="short title"
-        />
-        <label for="uname"><b>Complete Project</b></label>
-        <input
-          v-model="form.complete_project"
-          type="text"
-          placeholder="Complete Project"
-        />
-        <label for="uname"><b>Experience Year</b></label>
-        <input
-          v-model="form.year_experience"
-          type="text"
-          placeholder="Experience Year"
-        />
-
-        <label for="uname"><b>  Description</b></label>
-        <textarea v-model="form.description" type="text" placeholder="description" rows="5"></textarea>
+        <label for="uname"><b>Description </b></label>
+        <textarea v-model="form.short_title" type="text" placeholder="description" rows="7"></textarea>
+    
 
         <label for="psw"><b> Image</b></label>
         <input
