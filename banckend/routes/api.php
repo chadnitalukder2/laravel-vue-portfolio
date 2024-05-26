@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HeaderController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -42,5 +43,13 @@ Route::controller(ServiceController::class)->group(function () {
     Route::get('/edit_service/{id}', 'editService')->name('edit_service');
     Route::post('/update_service/{id}', 'updateService')->name('update_service');
     Route::get('/delete_service/{id}', 'deleteService')->name('delete_service');
+});
+
+Route::controller(PortfolioController::class)->group(function () {
+    Route::get('/get_portfolio', 'getPortfolio')->name('get_portfolio');
+    Route::post('/add_portfolio', 'addPortfolio')->name('add_portfolio');
+    Route::get('/edit_portfolio/{id}', 'editPortfolio')->name('edit_portfolio');
+    Route::post('/update_portfolio/{id}', 'updatePortfolio')->name('update_portfolio');
+    Route::get('/delete_portfolio/{id}', 'deletePortfolio')->name('delete_portfolio');
 });
 

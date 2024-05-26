@@ -4,6 +4,7 @@
         <router-link active-class="active" :to="{ name: 'all-header' }"> Header</router-link>
         <router-link active-class="active" :to="{ name: 'All-about' }"> About</router-link>
          <router-link active-class="active" :to="{ name: 'all-service' }"> Service</router-link>
+          <router-link active-class="active" :to="{ name: 'all-portfolio' }"> Portfolio</router-link>
         
     </div>
 </template>

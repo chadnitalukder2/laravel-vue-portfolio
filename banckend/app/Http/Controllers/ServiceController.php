@@ -40,10 +40,10 @@ class ServiceController extends Controller
     }//End Method
 
     public function editService( $id){
-        $services = Service::where('id', $id)->first();
-        return response()->json([
-            'services' => $services
-        ], 200);
+            $services = Service::where('id', $id)->first();
+            return response()->json([
+                'services' => $services
+            ], 200);
     }//End Method
 
     public function updateService(Request $request, $id){

@@ -97,6 +97,24 @@ const routes = [
         component: () => import("../Admin/Service/edit_service.vue"),
         meta: { requiresAuth: true, adminAuthRequired: true },
       },
+      {
+        path: "/all-portfolio",
+        name: "all-portfolio",
+        component: () => import("../Admin/portfolio/all_portfolio.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+      {
+        path: "/add-portfolio",
+        name: "add-portfolio",
+        component: () => import("../Admin/portfolio/add_portfolio.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+      {
+        path: "/edit-portfolio/:id",
+        name: "edit-portfolio",
+        component: () => import("../Admin/portfolio/edit_portfolio.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
     ],
   },
   //===============================================
