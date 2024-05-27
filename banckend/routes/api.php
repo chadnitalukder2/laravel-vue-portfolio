@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -67,5 +68,14 @@ Route::controller(ContactController::class)->group(function () {
     Route::get('/get_contact', 'getContact')->name('get_contact');
     Route::post('/add_contact', 'addContact')->name('add_contact');
     Route::get('/delete_contact/{id}', 'deleteContact')->name('delete_contact');
+});
+
+
+Route::controller(SettingController::class)->group(function () {
+    Route::get('/get_setting', 'getSetting')->name('get_setting');
+    Route::post('/add_setting', 'addSetting')->name('add_setting');
+    Route::get('/edit_setting/{id}', 'editSetting')->name('edit_setting');
+    Route::post('/update_setting/{id}', 'updateSetting')->name('update_setting');
+    Route::get('/delete_setting/{id}', 'deleteSetting')->name('delete_setting');
 });
 

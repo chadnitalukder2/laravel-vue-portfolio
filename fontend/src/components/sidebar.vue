@@ -7,6 +7,7 @@
         <router-link active-class="active" :to="{ name: 'all-portfolio' }"> Portfolio</router-link>
         <router-link active-class="active" :to="{ name: 'all-blog' }"> Blog</router-link>
         <router-link active-class="active" :to="{ name: 'all-contact' }"> Contact </router-link>
+        <router-link active-class="active" :to="{ name: 'all-setting' }"> Setting </router-link>
     </div>
 </template>
 

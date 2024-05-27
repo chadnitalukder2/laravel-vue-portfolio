@@ -141,6 +141,25 @@ const routes = [
         component: () => import("../Admin/Contact/all_contact.vue"),
         meta: { requiresAuth: true, adminAuthRequired: true },
       },
+
+      {
+        path: "/all-setting",
+        name: "all-setting",
+        component: () => import("../Admin/Setting/all_setting.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+      {
+        path: "/add-setting",
+        name: "add-setting",
+        component: () => import("../Admin/Setting/add_setting.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+      {
+        path: "/edit-setting/:id",
+        name: "edit-setting",
+        component: () => import("../Admin/Setting/edit_setting.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
     ],
   },
   //===============================================
