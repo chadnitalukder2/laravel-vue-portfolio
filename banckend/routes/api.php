@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServiceController;
@@ -60,5 +61,11 @@ Route::controller(BlogController::class)->group(function () {
     Route::get('/edit_blog/{id}', 'editBlog')->name('edit_blog');
     Route::post('/update_blog/{id}', 'updateBlog')->name('update_blog');
     Route::get('/delete_blog/{id}', 'deleteBlog')->name('delete_blog');
+});
+
+Route::controller(ContactController::class)->group(function () {
+    Route::get('/get_contact', 'getContact')->name('get_contact');
+    Route::post('/add_blog', 'addBlog')->name('add_blog');
+    Route::get('/delete_contact/{id}', 'deleteContact')->name('delete_contact');
 });
 

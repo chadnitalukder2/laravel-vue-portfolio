@@ -134,6 +134,13 @@ const routes = [
         component: () => import("../Admin/Blog/edit_blog.vue"),
         meta: { requiresAuth: true, adminAuthRequired: true },
       },
+
+      {
+        path: "/all-contact",
+        name: "all-contact",
+        component: () => import("../Admin/Contact/all_contact.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
     ],
   },
   //===============================================
