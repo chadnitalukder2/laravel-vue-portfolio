@@ -10,28 +10,28 @@ const form = ref([]);
 const image = [];
 
 onMounted(async () => {
-  editPortfolio();
+  editBlog();
 });
-const editPortfolio = async () => {
+const editBlog = async () => {
     const id = route.params.id;
-  let response = await axios.get(`/api/edit_portfolio/${id}`);
-    form.value = response.data.portfolio;
+  let response = await axios.get(`/api/edit_blog/${id}`);
+    form.value = response.data.blogs;
 };
-
+console.log(form.value)
 const handleFileChange = async (event) => {
   image.value = event.target.files[0];
 };
 
-const updatePortfolio = async () => {
+const updateBlog = async () => {
     let id = route.params.id;
     const formData = new FormData();
     formData.append("title", form.value.title);
-    formData.append("short_title", form.value.short_title);
     formData.append("image", image.value);
   
-    let response = await axios.post(`/api/update_portfolio/${id}`, formData).then(() => {
-      router.push("/all-portfolio");
-  })
+    let response = await axios.post(`/api/update_blog/${id}`, formData).then(() => {
+      router.push("/all-blog");
+    })
+  
 
 };
 
@@ -41,12 +41,12 @@ const updatePortfolio = async () => {
 <template>
   <div style=" background: rgba(245, 245, 247, 0.5019607843);  flex: auto;">
     <div class="btn" >
-        <router-link :to="{ name: 'all-portfolio' }" >
-         All Portfolio Data
+        <router-link :to="{ name: 'all-blog' }" >
+         All Blog Data
         </router-link>
     </div>
-    <form @submit.prevent="updatePortfolio"  enctype="multipart/form-data">
-      <h1>Update Portfolio Data</h1>
+    <form @submit.prevent="updateBlog"  enctype="multipart/form-data">
+      <h1>Update Blog Data</h1>
       <div class="container">
          <label for="uname"><b>Title </b></label>
         <input
@@ -54,10 +54,6 @@ const updatePortfolio = async () => {
           type="text"
           placeholder="title "
         />
-
-        <label for="uname"><b>Description </b></label>
-        <textarea v-model="form.short_title" type="text" placeholder="description" rows="7"></textarea>
-    
 
         <label for="psw"><b> Image</b></label>
         <input

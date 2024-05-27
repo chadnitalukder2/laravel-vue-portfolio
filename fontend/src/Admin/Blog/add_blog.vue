@@ -11,15 +11,14 @@ const handleFileChange = async (event) => {
   image.value = event.target.files[0];
 };
 
-const addPortfolio = async () => {
+const addBlog = async () => {
    const formData = new FormData();
   formData.append("title", form.value.title);
-  formData.append("short_title", form.value.short_title);
   formData.append("image", image.value);
 
   console.log({ formData });
-  let response = await axios.post("/api/add_portfolio", formData);
-  router.push("/all-portfolio");
+  let response = await axios.post("/api/add_blog", formData);
+  router.push("/all-blog");
 };
 
 </script>
@@ -30,8 +29,8 @@ const addPortfolio = async () => {
          All Portfolio Data
         </router-link>
     </div>
-    <form @submit.prevent="addPortfolio"  enctype="multipart/form-data">
-      <h1>Add Portfolio Data</h1>
+    <form @submit.prevent="addBlog"  enctype="multipart/form-data">
+      <h1>Add Blog Data</h1>
       <div class="container">
          <label for="uname"><b>Title </b></label>
         <input
@@ -39,10 +38,6 @@ const addPortfolio = async () => {
           type="text"
           placeholder="title "
         />
-
-        <label for="uname"><b>Description </b></label>
-        <textarea v-model="form.short_title" type="text" placeholder="description" rows="7"></textarea>
-    
 
         <label for="psw"><b> Image</b></label>
         <input

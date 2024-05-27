@@ -15,11 +15,6 @@ const getPortfolio = async () => {
     portfolio.value = response.data.portfolio;
 };
 
-const deletePortfolio = (id) => {
-  axios.get(`/api/delete_portfolio/${id}`).then(() => {
-    getPortfolio();
-  });
-};
 
 </script>
 

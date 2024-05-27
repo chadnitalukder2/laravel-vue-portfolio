@@ -1,6 +1,29 @@
-<script setup> 
-    
+<script setup>
+import axios from "axios";
+import { ref , onMounted} from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const blogs = ref([]);
+
+onMounted(async () => {
+  getBlog();
+});
+
+const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { month: 'short', day: '2-digit', year: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+};
+
+const getBlog = async () => {
+  let response = await axios.get("/api/get_blog");
+    blogs.value = response.data.blogs;
+};
+
+
 </script>
+
 
 <template>
     <div>
@@ -15,48 +38,14 @@
             <h2>LETEST BLOG</h2>
           </div>
           <div class="blogs-container">
-            <div class="card">
+            <div class="card" v-for="item in blogs" :key="item.id">
               <div class="image">
-                <img src="../assets/img/blogOne.png" alt="one">
+                <img :src="item.image" alt="one">
                 <div class="hidden"></div>
               </div>
               <div class="card-body">
-                <p>20 January, 2023</p>
-                <a href="#"><span>Become a UX/UI Designer With Career Foundry.</span></a>
-                <div class="btn">
-                  <a href="#">
-                  <span>Read More</span>
-                  <i class="fa-solid fa-arrow-right"></i>
-                </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="image">
-                <img src="../assets/img/blogTwo.png" alt="one">
-                <div class="hidden"></div>
-              </div>
-              <div class="card-body">
-                <p>20 January, 2023</p>
-                <a href="#"><span>Become a UX/UI Designer With Career Foundry.</span></a>
-                <div class="btn">
-                  <a href="#">
-                  <span>Read More</span>
-                  <i class="fa-solid fa-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="image">
-                <img src="../assets/img/blogThree.png" alt="one">
-                <div class="hidden">gh</div>
-              </div>
-              <div class="card-body">
-                <p>20 January, 2023</p>
-                <a href="#"><span>Become a UX/UI Designer With Career Foundry.</span></a>
+                <p>{{ formatDate(item.created_at) }}</p>
+                <a href="#"><span>{{ item.title }}</span></a>
                 <div class="btn">
                   <a href="#">
                   <span>Read More</span>

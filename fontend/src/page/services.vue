@@ -15,12 +15,6 @@ const getService = async () => {
     services.value = response.data.services;
 };
 
-const deleteService = (id) => {
-  axios.get(`/api/delete_service/${id}`).then(() => {
-    getService();
-  });
-};
-
 </script>
 
 

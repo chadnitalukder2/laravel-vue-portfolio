@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServiceController;
@@ -51,5 +52,13 @@ Route::controller(PortfolioController::class)->group(function () {
     Route::get('/edit_portfolio/{id}', 'editPortfolio')->name('edit_portfolio');
     Route::post('/update_portfolio/{id}', 'updatePortfolio')->name('update_portfolio');
     Route::get('/delete_portfolio/{id}', 'deletePortfolio')->name('delete_portfolio');
+});
+
+Route::controller(BlogController::class)->group(function () {
+    Route::get('/get_blog', 'getBlog')->name('get_blog');
+    Route::post('/add_blog', 'addBlog')->name('add_blog');
+    Route::get('/edit_blog/{id}', 'editBlog')->name('edit_blog');
+    Route::post('/update_blog/{id}', 'updateBlog')->name('update_blog');
+    Route::get('/delete_blog/{id}', 'deleteBlog')->name('delete_blog');
 });
 

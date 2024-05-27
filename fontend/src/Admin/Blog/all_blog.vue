@@ -4,20 +4,20 @@ import { ref , onMounted} from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
-const portfolio = ref([]);
+const blogs = ref([]);
 
 onMounted(async () => {
-  getPortfolio();
+  getBlog();
 });
 
-const getPortfolio = async () => {
-  let response = await axios.get("/api/get_portfolio");
-    portfolio.value = response.data.portfolio;
+const getBlog = async () => {
+  let response = await axios.get("/api/get_blog");
+    blogs.value = response.data.blogs;
 };
-
-const deletePortfolio = (id) => {
-  axios.get(`/api/delete_portfolio/${id}`).then(() => {
-    getPortfolio();
+console.log('blog', blogs.value)
+const deleteBlog = (id) => {
+  axios.get(`/api/delete_blog/${id}`).then(() => {
+    getBlog();
   });
 };
 
@@ -27,20 +27,19 @@ const deletePortfolio = (id) => {
   <div class="container" style="flex: auto;">
     <div class="table-box" >
       <div class="btn" >
-          <router-link :to="{ name: 'add-portfolio' }" >
-            Add Portfolio
+          <router-link :to="{ name: 'add-blog' }" >
+            Add Blog
           </router-link>
       </div>
-      <h1>All Portfolio Data</h1>
+      <h1>All Blog Data</h1>
       <table id="customers">
         <tr>
           <th>#ID</th>
           <th>Image </th>
           <th>Title </th>
-          <th>Short Title</th>
           <th>Action</th>
         </tr>
-        <tbody  v-for="item in portfolio" :key="item.id">
+        <tbody  v-for="item in blogs" :key="item.id">
           <tr>
             <td>{{ item.id }}</td>
             <td style="width: 70px; height: 60px">
@@ -50,10 +49,9 @@ const deletePortfolio = (id) => {
               />
             </td>
             <td> {{ item.title }}</td>
-            <td> {{ item.short_title }}</td>
             <td>
-            <span  @click="deletePortfolio(item.id)" style="background: red; margin-right: 5px; cursor: pointer;">Delete</span>
-            <router-link :to="{ name: 'edit-portfolio', params: { id: item.id } }">Edit</router-link>
+            <span  @click="deleteBlog(item.id)" style="background: red; margin-right: 5px; cursor: pointer;">Delete</span>
+            <router-link :to="{ name: 'edit-blog', params: { id: item.id } }">Edit</router-link>
             </td>
           </tr>
         </tbody>
