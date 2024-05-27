@@ -26,7 +26,7 @@ const deleteSetting = (id) => {
 <template>
   <div class="container" style="flex: auto;">
     <div class="table-box" >
-      <div class="btn" v-if=" settings == '' " >
+      <div class="btn" v-if="! settings == '' " >
           <router-link :to="{ name: 'add-setting' }" >
             Add Setting
           </router-link>

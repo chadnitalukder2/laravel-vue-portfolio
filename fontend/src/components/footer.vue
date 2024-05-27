@@ -1,5 +1,21 @@
 <script setup>
-   
+import axios from "axios";
+import { ref , onMounted} from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const setting = ref([]);
+
+onMounted(async () => {
+  getSetting();
+});
+
+const getSetting = async () => {
+  let response = await axios.get("/api/get_setting");
+    setting.value = response.data.setting;
+};
+
+
 </script>
 
 <template>
@@ -9,9 +25,9 @@
         <div class="container">
           <div class="footer-top">
             <div class="first">
-              <img src="../assets/img/LogoWhite.png" alt="logo">
-              <p>At vero eos et accusamus et iusto odio dign ducimus qui blanditiis praesentium volup deleniti atque corrupti quos dolores et molestias excepturi sint occaecati</p>
-              <h3>credesign@gmail.com</h3>
+              <img :src="setting.logo_img" alt="logo">
+              <p>{{ setting.short_desc }}</p>
+              <h3>{{ setting.email }}</h3>
             </div>
             <div class="second">
               <h4>Explore Link</h4>
@@ -40,14 +56,15 @@
               <div class="media">
                 <ul>
                   <li>
-                    <a href="#">
+                    <a href="{{ setting.facebook  }}">
                       <div class="icon">
                         <i class="fa-brands fa-facebook-f"></i>
                       </div>
+                
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="{{ setting.github  }}">
                       <div class="icon">
                         <i class="fa-brands fa-twitter"></i>
                       </div>
@@ -74,7 +91,7 @@
                     <i class="fa-solid fa-location-dot"></i>
                   </div>
                   <div class="project">
-                   <a href="#"><p>202 Dog Hill Lane Beloit,KS 67420</p></a>
+                   <a href="#"><p>{{ setting.address  }}</p></a>
                   </div>
                   </div>
                   <div class="items-1">
@@ -82,7 +99,7 @@
                       <i class="fa-solid fa-envelope"></i>
                     </div>
                     <div class="project">
-                     <a href="#"><p>+01589634755</p></a>
+                     <a href="#"><p>+{{ setting.phone  }}</p></a>
                     </div>
                 
               </div>
@@ -93,7 +110,7 @@
           <div class="footer-bottom">
             <div class="margin-bottom">
               <div class="left-bottom">
-                <p>All rights reserved © 2023 Credesign</p>
+                <p>{{ setting.copy_right  }}</p>
               </div>
               <div class="right-bottom">
                 <ul>

@@ -4,6 +4,17 @@ import axios from "axios";
 import { useRouter } from "vue-router";
 const router = useRouter();
 //---------------------------------------------------
+const setting = ref([]);
+
+onMounted(async () => {
+  getSetting();
+});
+
+const getSetting = async () => {
+  let response = await axios.get("/api/get_setting");
+    setting.value = response.data.setting;
+};
+//---------------------------------------------------
 const form = ref([]);
 
 
@@ -67,7 +78,7 @@ const addContact = async () => {
                 </div>
                 <div class="project">
                   <h4>Address</h4>
-                 <a href="#"><p>202 Dog Hill Lane Beloit, KS 67420</p></a>
+                 <a href="#"><p>{{ setting.address }}</p></a>
                 </div>
                 </div>
                 <div class="items-1">
@@ -76,7 +87,7 @@ const addContact = async () => {
                   </div>
                   <div class="project">
                     <h4>Phone</h4>
-                   <a href="#"><p>+01589634755</p></a>
+                   <a href="#"><p>+{{ setting.phone }}</p></a>
                   </div>
                   </div>
                   <div class="items-1">
@@ -85,7 +96,7 @@ const addContact = async () => {
                     </div>
                     <div class="project">
                       <h4>Email</h4>
-                     <a href="#"><p>credesign@gmail.com</p></a>
+                     <a href="#"><p>{{ setting.email }}</p></a>
                     </div>
                     </div>
                 
