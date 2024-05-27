@@ -65,7 +65,7 @@ Route::controller(BlogController::class)->group(function () {
 
 Route::controller(ContactController::class)->group(function () {
     Route::get('/get_contact', 'getContact')->name('get_contact');
-    Route::post('/add_blog', 'addBlog')->name('add_blog');
+    Route::post('/add_contact', 'addContact')->name('add_contact');
     Route::get('/delete_contact/{id}', 'deleteContact')->name('delete_contact');
 });
 

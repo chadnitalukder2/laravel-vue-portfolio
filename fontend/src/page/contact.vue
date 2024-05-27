@@ -1,6 +1,27 @@
-<script setup> 
-    
+<script setup>
+import { ref, onMounted } from "vue";
+import axios from "axios";
+import { useRouter } from "vue-router";
+const router = useRouter();
+//---------------------------------------------------
+const form = ref([]);
+
+
+const addContact = async () => {
+   const formData = new FormData();
+  formData.append("name", form.value.name);
+  formData.append("email", form.value.email);
+  formData.append("phone", form.value.phone);
+  formData.append("subject", form.value.subject);
+  formData.append("message", form.value.message);
+
+  console.log({ formData });
+  let response = await axios.post("/api/add_contact", formData);
+  form.value = '';
+};
+
 </script>
+
 
 <template>
     <div>
@@ -16,22 +37,22 @@
           </div>
           <div class="home">
             <div class="home-left">
-              <form>
+              <form @submit.prevent="addContact">
                 <div class="box-1">
-                  <input type="text" class="name" placeholder="Your Name">
+                  <input type="text" class="name" v-model="form.name" placeholder="Your Name">
                 </div>
 
                 <div class="box-1">
-                  <input type="text" class="name" placeholder="Your Email">
+                  <input type="text" class="name" v-model="form.email" placeholder="Your Email">
                 </div>
                 <div class="box-1">
-                  <input type="text" class="name" placeholder="Your Phone">
+                  <input type="text" class="name" v-model="form.phone" placeholder="Your Phone">
                 </div>
                 <div class="box-1">
-                  <input type="text" class="name" placeholder="Subject">
+                  <input type="text" class="name" v-model="form.subject" placeholder="Subject">
                 </div>
                 <div class="box-1 text-area">
-                  <input type="text" class="name" placeholder="Message">
+                  <input type="text" class="name" v-model="form.message" placeholder="Message">
                 </div>
                 <button type="submit" class="submit-btn">
                   <span>Send Me Message</span>
