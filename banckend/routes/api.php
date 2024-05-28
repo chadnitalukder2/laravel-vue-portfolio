@@ -38,6 +38,12 @@ Route::controller(AboutController::class)->group(function () {
     Route::post('/add_about', 'addAbout')->name('add_about');
     Route::get('/edit_about/{id}', 'editAbout')->name('edit_about');
     Route::post('/update_about/{id}', 'updateAbout')->name('update_about');
+    //===============================
+    Route::get('/get_experience', 'getExperience')->name('get_experience');
+    Route::post('/add_experience', 'addExperience')->name('add_experience');
+    Route::get('/edit_experience/{id}', 'editExperience')->name('edit_experience');
+    Route::post('/update_experience/{id}', 'updateExperience')->name('update_experience');
+    Route::get('/delete_experience/{id}', 'deleteExperience')->name('delete_experience');
 });
 
 Route::controller(ServiceController::class)->group(function () {

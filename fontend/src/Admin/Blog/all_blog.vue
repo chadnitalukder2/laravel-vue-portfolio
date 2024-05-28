@@ -1,4 +1,7 @@
 <script setup>
+import { useNotification } from '@kyvg/vue3-notification';
+const { notify } = useNotification();
+
 import axios from "axios";
 import { ref , onMounted} from "vue";
 import { useRouter } from "vue-router";
@@ -17,6 +20,10 @@ const getBlog = async () => {
 console.log('blog', blogs.value)
 const deleteBlog = (id) => {
   axios.get(`/api/delete_blog/${id}`).then(() => {
+    notify({
+      title: "Brand Item Deleted",
+      type: "success",
+    });
     getBlog();
   });
 };

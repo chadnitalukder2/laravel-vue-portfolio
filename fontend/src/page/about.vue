@@ -5,9 +5,11 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const abouts = ref([]);
+const experiences = ref([]);
 
 onMounted(async () => {
   getAbout();
+   getExperience();
 });
 
 const getAbout = async () => {
@@ -15,6 +17,10 @@ const getAbout = async () => {
     abouts.value = response.data.about;
 };
 
+const getExperience = async () => {
+  let response = await axios.get("/api/get_experience");
+    experiences.value = response.data.experiences;
+};
 
 </script>
 
@@ -62,30 +68,15 @@ const getAbout = async () => {
           </div>
 
           <div class="fead-up">
-            <div class="col-1">
+            <div class="col-1" v-for="item in experiences" :key="item.id" >
               <div class="row-1">
                 <div class="work">
                   <i class="fa-regular fa-square-check"></i>
-                  <p>Work simple and cline design</p>
-                </div>
-                <div class="web">
-                  <i class="fa-regular fa-square-check"></i>
-                  <p>Web Design Full stack</p>
+                  <p >{{ item.experience }}</p>
                 </div>
               </div>
             </div>
-            <div class="col-2">
-              <div class="row-2">
-                <div class="new">
-                  <i class="fa-regular fa-square-check"></i>
-                  <p>New idea and user friendly design</p>
-                </div>
-                <div class="revision">
-                  <i class="fa-regular fa-square-check"></i>
-                  <p>Unlimited Revisions</p>
-                </div>
-              </div>
-            </div>
+          
           </div>
           <button type="submit" class="submit-btn">
             <a href="#">

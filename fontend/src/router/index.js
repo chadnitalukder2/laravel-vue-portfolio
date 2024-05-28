@@ -80,6 +80,19 @@ const routes = [
         meta: { requiresAuth: true, adminAuthRequired: true },
       },
       {
+        path: "/add-experience",
+        name: "add-experience",
+        component: () => import("../Admin/About/add_experience.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+      {
+        path: "/edit-experience/:id",
+        name: "edit-experience",
+        component: () => import("../Admin/About/edit_experience.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+
+      {
         path: "/all-service",
         name: "all-service",
         component: () => import("../Admin/Service/all_service.vue"),

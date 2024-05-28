@@ -1,10 +1,12 @@
 <script setup>
+import Modal from "../../components/global/Modal.vue";
 import axios from "axios";
 import { ref , onMounted} from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
 const services = ref([]);
+const deleteVisibleId = ref(null);
 
 onMounted(async () => {
   getService();
@@ -21,6 +23,13 @@ const deleteService = (id) => {
   });
 };
 
+//---------------------------------------------------
+const openModalDelete = (id) => {
+    deleteVisibleId.value = id;
+};
+const closeModalDelete = () => {
+    deleteVisibleId.value =null;
+};
 </script>
 
 <template>
@@ -41,6 +50,18 @@ const deleteService = (id) => {
           <th>Action</th>
         </tr>
         <tbody  v-for="item in services" :key="item.id">
+           <Modal :show="deleteVisibleId === item.id" @close="closeModalDelete">
+                    <div id="myModal" style="text-align: center;">
+                        <h4 style="margin-top: 20px; font-size: 26px; color: #636363; font-weight: 500;">Are you sure?</h4>
+                        <div class="modal-body">
+                            <p style="font-size: 14px; color: #999999;">Do you really want to delete these records? This process cannot be undone.</p>
+                        </div>
+                        <div class="modal_footer" style="padding: 20px;" >
+                            <!-- <button @close="closeModalDelete" type="button" class="secondary" >Cancel</button> -->
+                            <button @click="deleteService(item.id)" type="button" style="background: #f15e5e;">Delete</button>
+                        </div>   
+                    </div>  
+           </Modal>
           <tr>
             <td>{{ item.id }}</td>
             <td style="width: 70px; height: 60px">
@@ -52,7 +73,7 @@ const deleteService = (id) => {
             <td> {{ item.title }}</td>
             <td> {{ item.short_title }}</td>
             <td>
-            <span  @click="deleteService(item.id)" style="background: red; margin-right: 5px; cursor: pointer;">Delete</span>
+            <span  @click="openModalDelete(item.id)" style="background: red; margin-right: 5px; cursor: pointer;">Delete</span>
             <router-link :to="{ name: 'edit-service', params: { id: item.id } }">Edit</router-link>
             </td>
           </tr>

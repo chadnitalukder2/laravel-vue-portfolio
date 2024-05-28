@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Experience;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -68,5 +69,52 @@ class AboutController extends Controller
             'image' =>  $imagePath,
             'updated_at' => Carbon::now(),
         ]);
+    }//End Method
+
+    //====================================
+    public function getExperience(){
+        $experiences = Experience::orderBy('id', 'desc')->get();
+        return response()->json([
+            'experiences' => $experiences,
+        ], 200);
+        return $experiences;
+    } //End Method
+
+    public function addExperience(Request $request){
+        $request->validate([
+            'experience' => 'required|string',
+        ]);
+
+        Experience::insert([
+            'experience' => $request->experience,
+            'created_at' => Carbon::now(),
+        ]);
+        return response()->json([
+            // 'newProduct' => $newProduct
+            'message' => 'About Data added successfully'
+        ]);
+    } //End Method
+
+    public function editExperience(Request $request, $id)
+    {
+        $experiences = Experience::where('id', $id)->first();
+        return response()->json([
+            'experiences' => $experiences
+        ], 200);
+    } //End Method
+
+    public function updateExperience(Request $request, $id)
+    {
+        $experiences = Experience::where('id', $id)->first();
+
+        $experiences->update([
+            'experience' => $request->experience,
+            'updated_at' => Carbon::now(),
+        ]);
+    }//End Method
+
+    public function deleteExperience($id){
+        $experience = Experience::findOrFail($id);
+        $experience->delete();
     }//End Method
 }

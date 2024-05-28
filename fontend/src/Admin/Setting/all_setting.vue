@@ -1,10 +1,12 @@
 <script setup>
+import Modal from "../../components/global/Modal.vue";
 import axios from "axios";
 import { ref , onMounted} from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
 const settings = ref([]);
+const deleteVisibleId = ref(null);
 
 onMounted(async () => {
   getSetting();
@@ -19,6 +21,14 @@ const deleteSetting = (id) => {
   axios.get(`/api/delete_setting/${id}`).then(() => {
     getSetting();
   });
+};
+
+//---------------------------------------------------
+const openModalDelete = (id) => {
+    deleteVisibleId.value = id;
+};
+const closeModalDelete = () => {
+    deleteVisibleId.value =null;
 };
 
 </script>
@@ -46,6 +56,18 @@ const deleteSetting = (id) => {
           <th>Action</th>
         </tr>
         <tbody  v-for="item in settings" :key="item.id">
+          <Modal :show="deleteVisibleId === item.id" @close="closeModalDelete">
+                    <div id="myModal" style="text-align: center;">
+                        <h4 style="margin-top: 20px; font-size: 26px; color: #636363; font-weight: 500;">Are you sure?</h4>
+                        <div class="modal-body">
+                            <p style="font-size: 14px; color: #999999;">Do you really want to delete these records? This process cannot be undone.</p>
+                        </div>
+                        <div class="modal_footer" style="padding: 20px;" >
+                            <!-- <button @close="closeModalDelete" type="button" class="secondary" >Cancel</button> -->
+                            <button @click="deleteSetting(item.id)" type="button" style="background: #f15e5e;">Delete</button>
+                        </div>   
+                    </div>  
+           </Modal>
           <tr>
             <td>{{ item.id }}</td>
             <td style="width: 70px; height: 60px">
@@ -62,7 +84,7 @@ const deleteSetting = (id) => {
             <td>{{ item.github }}</td>
             <td> {{ item.copy_right }}</td>
             <td>
-            <span  @click="deleteSetting(item.id)" style="background: red; margin-right: 5px; cursor: pointer;">Delete</span>
+            <span  @click="openModalDelete(item.id)" style="background: red; margin-right: 5px; cursor: pointer;">Delete</span>
             <router-link :to="{ name: 'edit-setting', params: { id: item.id } }">Edit</router-link>
             </td>
           </tr>
