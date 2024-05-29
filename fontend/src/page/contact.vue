@@ -49,6 +49,7 @@ const addContact = async () => {
           <div class="home">
             <div class="home-left">
               <form @submit.prevent="addContact">
+                <input type="hidden" v-model="id">
                 <div class="box-1">
                   <input type="text" class="name" v-model="form.name" placeholder="Your Name">
                 </div>

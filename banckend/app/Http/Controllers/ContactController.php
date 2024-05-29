@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\send_msg_mail;
 use App\Models\Contact;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -37,6 +39,18 @@ class ContactController extends Controller
             'message' => $request->message,
             'created_at' => Carbon::now(),
         ]);
+
+        //Start Send Email
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'message' => $request->message
+        ];
+        Mail::to('chadnitalukder2@gmail.com')->send(new send_msg_mail($data));
+
+   //End Send Email
         return response()->json([
             // 'newProduct' => $newProduct
             'message' => 'Message Send  successfully'
