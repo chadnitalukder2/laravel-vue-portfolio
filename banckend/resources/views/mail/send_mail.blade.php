@@ -11,3 +11,4 @@
     <h4> Message : {{ $data['message'] }}</h4>
 </body>
 </html>
+
