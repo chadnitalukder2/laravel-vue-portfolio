@@ -1,11 +1,15 @@
 <script setup>
 import axios from "axios";
-import { ref , onMounted} from "vue";
+import { ref , onMounted, watch } from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
 const portfolio = ref([]);
 const services = ref([]);
+
+const filter = ref({
+    service_id: "",
+});
 
 onMounted(async () => {
   getPortfolio();
@@ -13,7 +17,7 @@ onMounted(async () => {
 });
 
 const getPortfolio = async () => {
-  let response = await axios.get("/api/get_portfolio");
+  let response = await axios.get("/api/get_portfolio",{ params : { filter: filter.value }}  );
     portfolio.value = response.data.portfolio;
 };
 
@@ -21,6 +25,10 @@ const getService = async () => {
   let response = await axios.get("/api/get_service");
     services.value = response.data.services;
 };
+
+watch(filter, (newValue, oldValue) => {
+      getPortfolio();
+}, { deep: true });
 
 </script>
 
@@ -38,10 +46,17 @@ const getService = async () => {
         </div>
         <div class="mobile-row">
           
-          <div class="controls">
-            <button type="button">All</button>
-            <button type="button"  v-for="item in services" :key="item.id" > {{ item.title }}</button>
-          </div>
+           <div class="controls">
+                        <button type="button" @click="filter.service_id = ''">All</button>
+                        <button
+                            type="button"
+                            v-for="item in services"
+                            :key="item.id"
+                            @click="filter.service_id = item.id"
+                        >
+                            {{ item.title }}
+                        </button>
+                    </div>
           <div class="portpoli-massonary">
             
             <div class="items " v-for="item in portfolio" :key="item.id">

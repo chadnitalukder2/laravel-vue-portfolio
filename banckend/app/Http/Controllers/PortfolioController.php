@@ -5,11 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Portfolio;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class PortfolioController extends Controller
 {
-    public function getPortfolio(){
-        $portfolio = Portfolio::with('service')->orderBy('id', 'desc')->get();
+    public function getPortfolio(Request $request){
+        $queryParams = Arr::get($request, 'filter', []);
+
+        $portfolio = Portfolio::with('service')
+            ->when(isset($queryParams['service_id']), function ($query) use ($queryParams) {
+                return $query->where('service_id', $queryParams['service_id']);
+            })
+            ->get();
 
         return response()->json([
             'portfolio' => $portfolio
