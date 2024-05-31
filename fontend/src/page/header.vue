@@ -63,7 +63,7 @@ const getHeaderData = async () => {
             <img src="../assets/img/homeNannerShape.png" alt="home" />
           </div>
           <div class="image" style="display: flex; text-align: center;">
-            <img :src=" headerData.image " alt="nitesh" />
+            <img :src=" headerData.image " alt="image" />
           </div>
         </div>
       </div>

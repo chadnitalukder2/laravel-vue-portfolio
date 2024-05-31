@@ -25,7 +25,8 @@ const getSetting = async () => {
         <div class="container">
           <div class="footer-top">
             <div class="first">
-              <img :src="setting.logo_img" alt="logo">
+              <img v-if=" !setting.logo_img == ''" :src="setting.logo_img" alt="logo">
+                 <img v-else src="../assets/img/LogoWhite.png"  alt="logo">
               <p>{{ setting.short_desc }}</p>
               <h3>{{ setting.email }}</h3>
             </div>

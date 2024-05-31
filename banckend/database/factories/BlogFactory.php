@@ -17,8 +17,8 @@ class BlogFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence,
-            'image' => $this->faker->imageUrl(),
+            'title' => 'Become a UX/UI Designer With Career Foundry.',
+            'image' => 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwY29kZXxlbnwwfHwwfHx8MA%3D%3D',
         ];
     }
 }

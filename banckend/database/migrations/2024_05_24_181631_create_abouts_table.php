@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('complete_project');
             $table->string('year_experience');
+            $table->string('cv');
             $table->timestamps();
         });
     }

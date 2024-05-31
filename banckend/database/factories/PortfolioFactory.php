@@ -17,9 +17,10 @@ class PortfolioFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence(1),
-            'short_title' => $this->faker->sentence(2),
-            'image' => $this->faker->imageUrl(640, 480, 'portfolio', true)
+            'title' => 'App Development',
+            'service_id' => 0,
+            'short_title' => 'The best way to impress your web',
+            'image' => 'https://www.ikea.com/us/en/images/products/billy-bookcase-white__1051907_pe845796_s5.jpg?f=s',
         ];
     }
 }

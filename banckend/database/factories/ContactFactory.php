@@ -17,11 +17,11 @@ class ContactFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
-            'phone' => $this->faker->phoneNumber,
-            'subject' => $this->faker->sentence,
-            'message' => $this->faker->paragraph,
+            'name' => 'User',
+            'email' => 'user@gmail.com',
+            'phone' => '01755536322',
+            'subject' => 'hello',
+            'message' => 'Pomnis voluptas assumenda est, omnis dolor repellendus.',
         ];
     }
 }

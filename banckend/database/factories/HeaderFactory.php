@@ -17,10 +17,10 @@ class HeaderFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence,
-            'short_title' => $this->faker->sentence(2),
-            'short_desc' => $this->faker->sentence(6),
-            'image' => $this->faker->imageUrl(),
+            'short_title' => 'I AM DEVELOPER',
+            'title' => 'Creative Design and Web Solution Design', 
+            'short_desc' => 'A passionate programmer , born and brought up in Bangladesh. I am a Full Stack Web Developer with React.js, Redux, Express.js, Node.js, mongodb, mysql, php, laravel as my tech stack.',
+            'image' => 'https://static.vecteezy.com/system/resources/previews/020/389/525/original/hand-drawing-cartoon-girl-cute-girl-drawing-for-profile-picture-vector.jpg',
         ];
     }
 }

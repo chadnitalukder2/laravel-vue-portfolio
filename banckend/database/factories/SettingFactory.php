@@ -17,14 +17,14 @@ class SettingFactory extends Factory
     public function definition()
     {
         return [
-            'logo_img' => $this->faker->imageUrl(640, 480, 'business', true), // Generating a fake image URL
-            'short_desc' => $this->faker->sentence,
-            'email' => $this->faker->unique()->safeEmail,
-            'address' => $this->faker->address,
-            'phone' => $this->faker->phoneNumber,
-            'facebook' => $this->faker->url,
-            'github' => $this->faker->url,
-            'copy_right' => $this->faker->sentence,
+            'logo_img' => '',
+            'short_desc' => 'At vero eos et accusamus et iusto odio dign ducimus qui blanditiis praesentium volup deleniti atque corrupti quos dolores et molestias excepturi sint occaecati',
+            'email' => 'chadnitalukder@gmail.com',
+            'address' => 'Derai, Sylhet',
+            'phone' => '01753507282',
+            'facebook' => 'https://www.facebook.com/profile.php?id=100080683581830',
+            'github' =>  'https://github.com/chadnitalukder2',
+            'copy_right' => '© Chadni Talukder 2024',
         ];
     }
 }

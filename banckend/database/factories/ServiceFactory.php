@@ -17,9 +17,9 @@ class ServiceFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->name(2),
-            'short_desc' => $this->faker->sentence(3),
-            'image' => $this->faker->imageUrl(),
+            'title' => 'Bakend',
+            'short_desc' => 'Hen our power of choice is untrammelled and when nothing prevents our being able',
+            'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwmJnGli9p7LD5AS8Ksuk66oK1jNUoE30mWA&s',
         ];
     }
 }

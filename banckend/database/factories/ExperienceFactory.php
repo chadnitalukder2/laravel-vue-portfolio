@@ -17,8 +17,8 @@ class ExperienceFactory extends Factory
     public function definition()
     {
         return [
-            'experience' => $this->faker->sentence,
-            'image' => $this->faker->imageUrl(),
+            'experience' => 'Laravel',
+            'image' => ' https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1969px-Laravel.svg.png',
         ];
     }
 }
