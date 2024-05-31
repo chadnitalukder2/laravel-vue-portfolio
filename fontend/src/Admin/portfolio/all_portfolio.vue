@@ -16,7 +16,7 @@ const getPortfolio = async () => {
   let response = await axios.get("/api/get_portfolio");
     portfolio.value = response.data.portfolio;
 };
-
+console.log('portfolio', portfolio.value  )
 const deletePortfolio = (id) => {
   axios.get(`/api/delete_portfolio/${id}`).then(() => {
     getPortfolio();
@@ -44,6 +44,7 @@ const closeModalDelete = () => {
       <table id="customers">
         <tr>
           <th>#ID</th>
+          <th>Service Id</th>
           <th>Image </th>
           <th>Title </th>
           <th>Short Title</th>
@@ -64,6 +65,7 @@ const closeModalDelete = () => {
            </Modal>
           <tr>
             <td>{{ item.id }}</td>
+            <td>{{ item.service_id }}</td>
             <td style="width: 70px; height: 60px">
               <img
                  :src="item.image"

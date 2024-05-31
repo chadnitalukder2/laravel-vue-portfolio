@@ -39,8 +39,8 @@ const getService = async () => {
              
               <div class="grid-1" v-for="item in services" :key="item.id">
                 <img :src="item.image" alt="one" width="60px" height="60px">
-                <h3>{{ item.short_title }}</h3>
-                <p>{{ item.title }}</p>
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.short_desc }}</p>
               </div>
             
 

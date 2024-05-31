@@ -25,8 +25,8 @@ const handleFileChange = async (event) => {
 const updateService = async () => {
     let id = route.params.id;
     const formData = new FormData();
-    formData.append("title", form.value.title);
-    formData.append("short_title", form.value.short_title);
+  formData.append("title", form.value.title);
+    formData.append("short_desc", form.value.short_desc);
     formData.append("image", image.value);
   
     let response = await axios.post(`/api/update_service/${id}`, formData).then(() => {
@@ -56,7 +56,7 @@ const updateService = async () => {
         />
 
         <label for="uname"><b>Description </b></label>
-        <textarea v-model="form.short_title" type="text" placeholder="description" rows="7"></textarea>
+        <textarea v-model="form.short_desc" type="text" placeholder="description" rows="7"></textarea>
     
 
         <label for="psw"><b> Image</b></label>

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class PortfolioController extends Controller
 {
     public function getPortfolio(){
-        $portfolio = Portfolio::orderBy('id', 'desc')->get();
+        $portfolio = Portfolio::with('service')->orderBy('id', 'desc')->get();
 
         return response()->json([
             'portfolio' => $portfolio
@@ -28,6 +28,7 @@ class PortfolioController extends Controller
         $imagePath = asset('storage/' . $imagePath);
 
         Portfolio::insert([
+            'service_id' => $request->service_id,
             'title' => $request->title,
             'short_title' => $request->short_title,
             'image' =>  $imagePath,

@@ -20,7 +20,7 @@ class ServiceController extends Controller
     public function addService(Request $request){
         $request->validate([
             'title' => 'required|string',
-            'short_title' => 'required|string',
+            'short_desc' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif',
 
         ]);
@@ -29,7 +29,7 @@ class ServiceController extends Controller
 
         Service::insert([
             'title' => $request->title,
-            'short_title' => $request->short_title,
+            'short_desc' => $request->short_desc,
             'image' =>  $imagePath,
             'created_at' => Carbon::now(),
         ]);
@@ -54,7 +54,7 @@ class ServiceController extends Controller
 
         $services->update([
             'title' => $request->title,
-            'short_title' => $request->short_title,
+            'short_desc' => $request->short_desc,
             'image' =>  $imagePath,
             'updated_at' => Carbon::now(),
         ]);

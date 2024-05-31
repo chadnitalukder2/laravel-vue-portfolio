@@ -46,7 +46,7 @@ const closeModalDelete = () => {
           <th>#ID</th>
           <th>Image </th>
           <th>Title </th>
-          <th>Short Title</th>
+          <th>Short desc</th>
           <th>Action</th>
         </tr>
         <tbody  v-for="item in services" :key="item.id">
@@ -71,7 +71,7 @@ const closeModalDelete = () => {
               />
             </td>
             <td> {{ item.title }}</td>
-            <td> {{ item.short_title }}</td>
+            <td> {{ item.short_desc }}</td>
             <td>
             <span  @click="openModalDelete(item.id)" style="background: red; margin-right: 5px; cursor: pointer;">Delete</span>
             <router-link :to="{ name: 'edit-service', params: { id: item.id } }">Edit</router-link>

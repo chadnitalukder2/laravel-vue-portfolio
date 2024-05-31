@@ -14,7 +14,7 @@ const handleFileChange = async (event) => {
 const addService = async () => {
    const formData = new FormData();
   formData.append("title", form.value.title);
-  formData.append("short_title", form.value.short_title);
+  formData.append("short_desc", form.value.short_desc);
   formData.append("image", image.value);
 
   console.log({ formData });
@@ -41,7 +41,7 @@ const addService = async () => {
         />
 
         <label for="uname"><b>Description </b></label>
-        <textarea v-model="form.short_title" type="text" placeholder="description" rows="7"></textarea>
+        <textarea v-model="form.short_desc" type="text" placeholder="description" rows="7"></textarea>
     
 
         <label for="psw"><b> Image</b></label>

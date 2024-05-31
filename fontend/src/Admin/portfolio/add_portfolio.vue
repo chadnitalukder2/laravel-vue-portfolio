@@ -6,6 +6,16 @@ const router = useRouter();
 //---------------------------------------------------
 const form = ref([]);
 const image = ref();
+const services = ref([]);
+
+onMounted(async () => {
+  getService();
+});
+
+const getService = async () => {
+  let response = await axios.get("/api/get_service");
+    services.value = response.data.services;
+};
 
 const handleFileChange = async (event) => {
   image.value = event.target.files[0];
@@ -15,6 +25,7 @@ const addPortfolio = async () => {
    const formData = new FormData();
   formData.append("title", form.value.title);
   formData.append("short_title", form.value.short_title);
+    formData.append("service_id", form.value.service_id);
   formData.append("image", image.value);
 
   console.log({ formData });
@@ -40,6 +51,12 @@ const addPortfolio = async () => {
           type="text"
           placeholder="title "
         />
+
+          <label for="service" class="form-label"><b>Service</b></label>
+            <select v-model="form.service_id" id="service" class="form-select">
+              <option disabled value="">Select Service</option>
+              <option v-for="item in services" :key="item.id" :value="item.id">{{ item.title }}</option>
+            </select>
 
         <label for="uname"><b>Description </b></label>
         <textarea v-model="form.short_title" type="text" placeholder="description" rows="7"></textarea>

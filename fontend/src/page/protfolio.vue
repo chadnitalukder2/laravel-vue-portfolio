@@ -5,9 +5,11 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const portfolio = ref([]);
+const services = ref([]);
 
 onMounted(async () => {
   getPortfolio();
+  getService();
 });
 
 const getPortfolio = async () => {
@@ -15,6 +17,10 @@ const getPortfolio = async () => {
     portfolio.value = response.data.portfolio;
 };
 
+const getService = async () => {
+  let response = await axios.get("/api/get_service");
+    services.value = response.data.services;
+};
 
 </script>
 
@@ -34,11 +40,7 @@ const getPortfolio = async () => {
           
           <div class="controls">
             <button type="button">All</button>
-            <button type="button">UI/Ux Design</button>
-            <button type="button">Branding Design</button>
-            <button class="controls-active" type="button">Graphic Design</button>
-            <button type="button">App Development</button>
-            <button type="button">Web Design</button>
+            <button type="button"  v-for="item in services" :key="item.id" > {{ item.title }}</button>
           </div>
           <div class="portpoli-massonary">
             
