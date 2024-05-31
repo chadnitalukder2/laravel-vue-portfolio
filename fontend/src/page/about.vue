@@ -90,7 +90,7 @@ const getSetting = async () => {
 
 <style lang="scss" scoped>
 .about {
-  padding: 130px 95px 50px 100px;
+  padding: 130px 95px 30px 100px;
   width: 100%;
   display: flex;
   justify-content: space-between;

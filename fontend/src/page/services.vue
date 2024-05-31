@@ -55,7 +55,7 @@ const getService = async () => {
 
 <style lang="scss" scoped>
     .service {
-  padding: 65px 0px 130px 0px;
+  padding: 65px 0px 30px 0px;
 
   @media only screen and (min-width: 1500px){
     padding:30px 50px ;
