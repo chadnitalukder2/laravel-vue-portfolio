@@ -65,7 +65,8 @@ const closeModalDelete = () => {
            </Modal>
           <tr>
             <td>{{ item.id }}</td>
-            <td>{{ item.service_id }}</td>
+            <td v-if="item.service">{{ item.service.title }}</td>
+            <td v-else>No Service</td>
             <td style="width: 70px; height: 60px">
               <img
                  :src="item.image"
