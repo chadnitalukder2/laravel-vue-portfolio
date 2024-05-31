@@ -82,19 +82,19 @@ const routes = [
       {
         path: "/all-experience",
         name: "all-experience",
-        component: () => import("../Admin/Skill/all_experience.vue"),
+        component: () => import("../Admin/Resume/all_experience.vue"),
         meta: { requiresAuth: true, adminAuthRequired: true },
       },
       {
         path: "/add-experience",
         name: "add-experience",
-        component: () => import("../Admin/Skill/add_experience.vue"),
+        component: () => import("../Admin/Resume/add_experience.vue"),
         meta: { requiresAuth: true, adminAuthRequired: true },
       },
       {
         path: "/edit-experience/:id",
         name: "edit-experience",
-        component: () => import("../Admin/Skill/edit_experience.vue"),
+        component: () => import("../Admin/Resume/edit_experience.vue"),
         meta: { requiresAuth: true, adminAuthRequired: true },
       },
 

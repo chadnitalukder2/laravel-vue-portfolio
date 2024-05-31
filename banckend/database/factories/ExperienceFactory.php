@@ -18,6 +18,7 @@ class ExperienceFactory extends Factory
     {
         return [
             'experience' => $this->faker->sentence,
+            'image' => $this->faker->imageUrl(),
         ];
     }
 }

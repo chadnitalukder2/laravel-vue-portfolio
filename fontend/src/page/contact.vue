@@ -116,7 +116,7 @@ const addContact = async () => {
   padding: 65px 0px 130px 0px;
 
   @media only screen and (min-width: 1500px){
-    padding:70px 250px ;
+    padding:70px 50px ;
   }
   @media only screen and (max-width: 992px) {
     padding: 45px 0px 90px 0px;

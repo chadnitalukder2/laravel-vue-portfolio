@@ -1,3 +1,24 @@
+<script setup>
+import axios from "axios";
+import { ref , onMounted} from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const experiences = ref([]);
+onMounted(async () => {
+  getExperience();
+});
+
+// ===================================
+const getExperience = async () => {
+  let response = await axios.get("/api/get_experience");
+    experiences.value = response.data.experiences;
+};
+
+</script>
+
+
+
 <template>
     <div>
         <!-- service section start -->
@@ -17,31 +38,10 @@
             <div class="service-grid">
 
              
-              <div class="grid-1">
-                <img  alt="one" width="60px" height="60px">
-                <h3> item.title</h3>
+              <div class="grid-1" v-for="item in experiences" :key="item.id">
+                <img  :src="item.image" alt="one" width="60px" height="60px">
+                <h3> {{ item.experience }}</h3>
               </div>
-              <div class="grid-1">
-                <img  alt="one" width="60px" height="60px">
-                <h3> item.title</h3>
-              </div>
-              <div class="grid-1">
-                <img  alt="one" width="60px" height="60px">
-                <h3> item.title</h3>
-              </div>
-              <div class="grid-1">
-                <img  alt="one" width="60px" height="60px">
-                <h3> item.title</h3>
-              </div>
-              <div class="grid-1">
-                <img  alt="one" width="60px" height="60px">
-                <h3> item.title</h3>
-              </div>
-              <div class="grid-1">
-                <img  alt="one" width="60px" height="60px">
-                <h3> item.title</h3>
-              </div>
-            
 
             </div>
           </div>
@@ -57,7 +57,7 @@
   padding: 65px 0px 130px 0px;
 
   @media only screen and (min-width: 1500px){
-    padding:30px 250px ;
+    padding:30px 50px ;
   }
   @media only screen and (max-width: 992px){
     padding:45px 0px 90px 0px;
@@ -87,10 +87,10 @@
             grid-template-columns: repeat(2,1fr);
               }
               @media only screen and (max-width: 576px) {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2,1fr);
             }
         .grid-1 {
-          padding: 50px 30px;
+          padding: 15px 10px;
           border: 1px solid #FFE2D1;
           border-radius: 6px;
           transition: all 0.3s;
@@ -103,11 +103,11 @@
           }
           
           img {
-            margin-bottom: 25px;
+            margin-bottom: 12px;
           }
           h3 {
-            font-size: 24px;
-            font-weight: 500;
+            font-size: 16px;
+            font-weight: 600;
             margin-bottom: 13px;
             margin: 0px;
             color: var(--black-color);

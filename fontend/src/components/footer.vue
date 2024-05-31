@@ -64,7 +64,7 @@ const getSetting = async () => {
                     </a>
                   </li>
                   <li>
-                    <a :href=" setting.github">
+                    <a :href=" setting.github" target="_blank">
                       <div class="icon">
                         <i class="fa-brands fa-github"></i>
                       </div>
@@ -140,7 +140,7 @@ const getSetting = async () => {
   .container {
     padding: 0 100px;
     @media only screen and (min-width: 1500px){
-      padding:0px 250px ;
+      padding:0px 150px ;
     }
     @media only screen and (max-width: 992px){
         padding:0px 50px;

@@ -39,8 +39,8 @@ const getService = async () => {
              
               <div class="grid-1" v-for="item in services" :key="item.id">
                 <img :src="item.image" alt="one" width="60px" height="60px">
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.short_title }}</p>
+                <h3>{{ item.short_title }}</h3>
+                <p>{{ item.title }}</p>
               </div>
             
 
@@ -58,7 +58,7 @@ const getService = async () => {
   padding: 65px 0px 130px 0px;
 
   @media only screen and (min-width: 1500px){
-    padding:30px 250px ;
+    padding:30px 50px ;
   }
   @media only screen and (max-width: 992px){
     padding:45px 0px 90px 0px;

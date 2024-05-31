@@ -84,9 +84,12 @@ class AboutController extends Controller
         $request->validate([
             'experience' => 'required|string',
         ]);
+        $imagePath = $request->file('image')->store('resume_img', 'public');
+        $imagePath = asset('storage/' . $imagePath);
 
         Experience::insert([
             'experience' => $request->experience,
+            'image' =>  $imagePath,
             'created_at' => Carbon::now(),
         ]);
         return response()->json([
@@ -107,8 +110,12 @@ class AboutController extends Controller
     {
         $experiences = Experience::where('id', $id)->first();
 
+        $imagePath = $request->file('image')->store('resume_img', 'public');
+        $imagePath = asset('storage/' . $imagePath);
+
         $experiences->update([
             'experience' => $request->experience,
+            'image' =>  $imagePath,
             'updated_at' => Carbon::now(),
         ]);
     }//End Method

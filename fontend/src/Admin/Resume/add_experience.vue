@@ -2,32 +2,24 @@
 import { ref, onMounted } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
-import { useRoute } from "vue-router";
 const router = useRouter();
-const route = useRoute();
 //---------------------------------------------------
 const form = ref([]);
+const image = [];
 
-onMounted(async () => {
-  editExperience();
-});
-const editExperience = async () => {
-    const id = route.params.id;
-  let response = await axios.get(`/api/edit_experience/${id}`);
-    form.value = response.data.experiences;
+const handleFileChange = async (event) => {
+  image.value = event.target.files[0];
 };
 
-const updateExperience = async () => {
-    let id = route.params.id;
-    const formData = new FormData();
-    formData.append("experience", form.value.experience);
+const addExperience = async () => {
+   const formData = new FormData();
+  formData.append("experience", form.value.experience);
+  formData.append("image", image.value);
   
-    let response = await axios.post(`/api/update_experience/${id}`, formData).then(() => {
-      router.push("/All-about");
-  })
-
+  console.log({ formData });
+  let response = await axios.post("/api/add_experience", formData);
+  router.push("/all-experience");
 };
-
 
 </script>
 
@@ -38,15 +30,24 @@ const updateExperience = async () => {
          All Experience Data
         </router-link>
     </div>
-    <form @submit.prevent="updateExperience"  enctype="multipart/form-data">
-      <h1>Update Experience Data</h1>
+    <form @submit.prevent="addExperience"  enctype="multipart/form-data">
+      <h1>Add Experience Data</h1>
       <div class="container">
 
         <label for="uname"><b> Experience </b></label>
         <textarea v-model="form.experience" type="text" placeholder="experience" rows="3"></textarea>
 
+        <label for="psw"><b> Image</b></label>
+        <input
+          @change="handleFileChange"
+          type="file"
+          placeholder="Product Image"
+          name="psw"
+          required
+        />
+
         <br /><br />
-        <button type="submit">Update Data</button>
+        <button type="submit">Add Data</button>
       </div>
     </form>
   </div>

@@ -80,7 +80,7 @@ const getHeaderData = async () => {
   flex-wrap: wrap;
   padding: 0 50px 0 140px;
   @media only screen and (min-width: 1500px){
-    padding:0px 250px ;
+    padding:0px 130px ;
   }
  
   @media only screen and (max-width: 1200px) {

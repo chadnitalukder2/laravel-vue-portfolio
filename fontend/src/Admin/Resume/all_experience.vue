@@ -44,6 +44,7 @@ const closeModalDelete = () => {
       <table id="customers">
         <tr>
           <th>#ID</th>
+           <th>Image</th>
           <th>Experience Name </th>
           <th>Action</th>
         </tr>
@@ -62,7 +63,12 @@ const closeModalDelete = () => {
            </Modal>
           <tr>
             <td>{{ item.id }}</td>
-            
+            <td style="width: 70px; height: 60px">
+              <img
+                 :src="item.image"
+                style="width: 100%; height: 100%"
+              />
+            </td>
             <td> {{ item.experience }}</td>
             <td>
               <span  @click="openModalDelete(item.id)" style="background: red; margin-right: 5px; cursor: pointer;">Delete</span>

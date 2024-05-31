@@ -14,7 +14,6 @@ class BlogController extends Controller
         return response()->json([
             'blogs' => $blogs
         ], 200);
-        return $blogs;
     }//End Method
 
     public function addBlog(Request $request){

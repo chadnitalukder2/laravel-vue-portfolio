@@ -32,8 +32,8 @@ const getSetting = async () => {
       <section class="about" id="about">
         <div class="about-left">
           <div class="photo">
-          <div class="cover-img">
-          <img :src="abouts.image " alt="nitesh" />
+          <div class="cover-img" >
+          <img :src="abouts.image " alt="about"/>
           </div>
           <div class="hidden"></div>
         </div>
@@ -97,7 +97,7 @@ const getSetting = async () => {
   flex-wrap: wrap;
 
   @media only screen and (min-width: 1500px){
-    padding:100px 250px ;
+    padding:100px 150px ;
   }
 
   @media only screen and (max-width: 992px){
@@ -108,6 +108,7 @@ const getSetting = async () => {
 }
 @media only screen and (max-width: 576px) {
   padding: 0px 10px;
+ 
 }
 
 
@@ -130,11 +131,15 @@ const getSetting = async () => {
       margin-bottom: 50px;
       
       .cover-img{
+        height: 600px;
         img {
-            background: rgba(0, 0, 0, 0.4);
+          background: rgba(0, 0, 0, 0.4);
           width: 100%;
           height: 100%;
           border-radius: 6px;
+        }
+        @media only screen and (max-width: 576px) {
+            height: 100%;
         }
       }
         .hidden{
