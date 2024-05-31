@@ -27,12 +27,12 @@ const getHeaderData = async () => {
           </div>
           <div class="sub-heading">
             <img src="../assets/img/orangeDot.png" alt="orange" />
-            <p>{{ headerData.title }}</p>
+            <p>{{ headerData.short_title }}</p>
           </div>
 
           <div class="animate-heading">
             <h1>
-              {{ headerData.short_title  }}
+              {{ headerData.title  }}
               <span class="wrapper">
                 <b class="visible">Solution</b>
                 <b class="hidden">Design</b>

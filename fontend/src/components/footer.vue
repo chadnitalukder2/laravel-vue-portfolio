@@ -56,7 +56,7 @@ const getSetting = async () => {
               <div class="media">
                 <ul>
                   <li>
-                    <a href="{{ setting.facebook  }}">
+                    <a :href="setting.facebook">
                       <div class="icon">
                         <i class="fa-brands fa-facebook-f"></i>
                       </div>
@@ -64,9 +64,9 @@ const getSetting = async () => {
                     </a>
                   </li>
                   <li>
-                    <a href="{{ setting.github  }}">
+                    <a :href=" setting.github">
                       <div class="icon">
-                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-github"></i>
                       </div>
                     </a>
                   </li>

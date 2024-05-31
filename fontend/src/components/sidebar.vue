@@ -4,6 +4,7 @@
         <router-link active-class="active" :to="{ name: 'all-header' }"> Header</router-link>
         <router-link active-class="active" :to="{ name: 'All-about' }"> About</router-link>
         <router-link active-class="active" :to="{ name: 'all-service' }"> Service</router-link>
+        <router-link active-class="active" :to="{ name: 'all-experience' }"> Resume</router-link>
         <router-link active-class="active" :to="{ name: 'all-portfolio' }"> Portfolio</router-link>
         <router-link active-class="active" :to="{ name: 'all-blog' }"> Blog</router-link>
         <router-link active-class="active" :to="{ name: 'all-contact' }"> Contact </router-link>

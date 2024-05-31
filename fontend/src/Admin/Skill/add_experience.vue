@@ -20,7 +20,7 @@ const addExperience = async () => {
 <template>
   <div style=" background: rgba(245, 245, 247, 0.5019607843);  flex: auto;">
     <div class="btn" >
-        <router-link :to="{ name: 'All-about' }" >
+        <router-link :to="{ name: 'all-experience' }" >
          All Experience Data
         </router-link>
     </div>

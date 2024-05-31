@@ -5,11 +5,11 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const abouts = ref([]);
-const experiences = ref([]);
+const setting = ref([]);
 
 onMounted(async () => {
   getAbout();
-   getExperience();
+  getSetting();
 });
 
 const getAbout = async () => {
@@ -17,10 +17,11 @@ const getAbout = async () => {
     abouts.value = response.data.about;
 };
 
-const getExperience = async () => {
-  let response = await axios.get("/api/get_experience");
-    experiences.value = response.data.experiences;
+const getSetting = async () => {
+  let response = await axios.get("/api/get_setting");
+    setting.value = response.data.setting;
 };
+
 
 </script>
 
@@ -41,9 +42,9 @@ const getExperience = async () => {
         <div class="about-right">
           <div class="sub-heading">
             <img src="../assets/img/orangeDot.png" alt="orange" />
-            <p>{{ abouts.title }}</p>
+            <p>{{ abouts.short_title }}</p>
           </div>
-          <h2>{{ abouts.short_title }}</h2>
+          <h2>{{ abouts.title }}</h2>
           <p class="info">
            {{ abouts.description }}
           </p>
@@ -67,23 +68,18 @@ const getExperience = async () => {
 
           </div>
 
-          <div class="fead-up">
-            <div class="col-1" v-for="item in experiences" :key="item.id" >
-              <div class="row-1">
-                <div class="work">
-                  <i class="fa-regular fa-square-check"></i>
-                  <p >{{ item.experience }}</p>
-                </div>
-              </div>
-            </div>
-          
-          </div>
+        <div style="display: flex; gap: 20px; padding-top: 10px; text-align: center;">
           <button type="submit" class="submit-btn">
             <a href="#">
             <span>Dowanload My CV</span>
             </a>
           </button>
-
+          <button type="submit" class="submit-btn">
+            <a :href=" setting.github">
+            <span> <i class="fa-brands fa-github"></i> GitHub </span>
+            </a>
+          </button>
+        </div>
 
         </div>
       </section>

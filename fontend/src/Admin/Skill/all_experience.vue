@@ -5,21 +5,23 @@ import { ref , onMounted} from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
-const abouts = ref([]);
+const experiences = ref([]);
 const deleteVisibleId = ref(null);
 
 onMounted(async () => {
-  getAbout();
-
+  getExperience();
 });
 
-const getAbout = async () => {
-  let response = await axios.get("/api/get_about");
-    abouts.value = response.data.abouts;
-};
-
 // ===================================
-
+const getExperience = async () => {
+  let response = await axios.get("/api/get_experience");
+    experiences.value = response.data.experiences;
+};
+const deleteExperience = (id) => {
+  axios.get(`/api/delete_experience/${id}`).then(() => {
+    getExperience();
+  });
+};
 //---------------------------------------------------
 const openModalDelete = (id) => {
     deleteVisibleId.value = id;
@@ -31,47 +33,45 @@ const closeModalDelete = () => {
 
 <template>
   <div class="container">
-    <div class="table-box" >
-      <div class="btn" v-if=" abouts == ''">
-          <router-link :to="{ name: 'Add-about' }" >
-            Add About
+    <!-- =================Experience========================= -->
+      <div class="table-box" >
+      <div class="btn" >
+          <router-link :to="{ name: 'add-experience' }" >
+            Add Experience
           </router-link>
       </div>
-      <h1>All About Data</h1>
+      <h1>All Experience </h1>
       <table id="customers">
         <tr>
           <th>#ID</th>
-          <th>Image </th>
-          <th>Title </th>
-          <th>Short Title</th>
-          <th>Description</th>
-          <th>Total Project</th>
-          <th>Year Experience</th>
+          <th>Experience Name </th>
           <th>Action</th>
         </tr>
-        <tbody  v-for="item in abouts" :key="item.id">
+        <tbody  v-for="item in experiences" :key="item.id">
+           <Modal :show="deleteVisibleId === item.id" @close="closeModalDelete">
+                    <div id="myModal" style="text-align: center;">
+                        <h4 style="margin-top: 20px; font-size: 26px; color: #636363; font-weight: 500;">Are you sure?</h4>
+                        <div class="modal-body">
+                            <p style="font-size: 14px; color: #999999;">Do you really want to delete these records? This process cannot be undone.</p>
+                        </div>
+                        <div class="modal_footer" style="padding: 20px;" >
+                            <!-- <button @close="closeModalDelete" type="button" class="secondary" >Cancel</button> -->
+                            <button @click="deleteExperience(item.id)" type="button" style="background: #f15e5e;">Delete</button>
+                        </div>   
+                    </div>  
+           </Modal>
           <tr>
             <td>{{ item.id }}</td>
-            <td style="width: 70px; height: 60px">
-              <img
-                 :src="item.image"
-                style="width: 100%; height: 100%"
-              />
-            </td>
-            <td> {{ item.title }}</td>
-            <td> {{ item.short_title }}</td>
-            <td> {{ item.description }}</td>
-             <td> {{ item.complete_project }}</td>
-              <td> {{ item.year_experience }}</td>
+            
+            <td> {{ item.experience }}</td>
             <td>
-            <router-link :to="{ name: 'edit-about', params: { id: item.id } }">Edit</router-link>
+              <span  @click="openModalDelete(item.id)" style="background: red; margin-right: 5px; cursor: pointer;">Delete</span>
+              <router-link :to="{ name: 'edit-experience', params: { id: item.id } }">Edit</router-link>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <!-- =================Experience========================= -->
-  
   </div>
 </template>
 
