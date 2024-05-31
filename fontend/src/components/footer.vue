@@ -57,7 +57,7 @@ const getSetting = async () => {
               <div class="media">
                 <ul>
                   <li>
-                    <a :href="setting.facebook">
+                    <a :href="setting.facebook" target="_blank">
                       <div class="icon">
                         <i class="fa-brands fa-facebook-f"></i>
                       </div>

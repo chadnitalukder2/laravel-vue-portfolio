@@ -75,7 +75,7 @@ const getSetting = async () => {
             </a>
           </button>
           <button type="submit" class="submit-btn">
-            <a :href=" setting.github">
+            <a :href=" setting.github" target="_blank">
             <span> <i class="fa-brands fa-github"></i> GitHub </span>
             </a>
           </button>
@@ -90,7 +90,7 @@ const getSetting = async () => {
 
 <style lang="scss" scoped>
 .about {
-  padding: 130px 95px 30px 100px;
+  padding: 80px 95px 30px 100px;
   width: 100%;
   display: flex;
   justify-content: space-between;
