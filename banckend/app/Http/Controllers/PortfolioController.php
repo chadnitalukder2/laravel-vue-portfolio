@@ -41,7 +41,7 @@ class PortfolioController extends Controller
     }//End Method
 
     public function editPortfolio($id){
-        $portfolio = Portfolio::where('id', $id)->first();
+        $portfolio = Portfolio::with('service')->where('id', $id)->first();
         return response()->json([
             'portfolio' => $portfolio
         ], 200);
@@ -56,6 +56,7 @@ class PortfolioController extends Controller
 
         $portfolio->update([
             'title' => $request->title,
+            'service_id' => $request->service_id,
             'short_title' => $request->short_title,
             'image' =>  $imagePath,
             'updated_at' => Carbon::now(),
