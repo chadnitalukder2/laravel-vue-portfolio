@@ -5,9 +5,11 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const headerData = ref([]);
+const abouts = ref([]);
 
 onMounted(async () => {
   getHeaderData();
+   getAbout();
 });
 
 const getHeaderData = async () => {
@@ -15,6 +17,22 @@ const getHeaderData = async () => {
     headerData.value = response.data.headerData;
 };
 
+const getAbout = async () => {
+  let response = await axios.get("/api/get_about");
+    abouts.value = response.data.about;
+};
+
+
+// Function to handle CV download
+const downloadCv = () => {
+  const link = document.createElement('a');
+  link.href = abouts.value.cv; // Ensure this URL points to the CV file
+  link.setAttribute('download', 'CV.pdf'); // Specify the file name
+   link.setAttribute('target', '_blank');
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
 </script>
 
@@ -45,10 +63,10 @@ const getHeaderData = async () => {
             </p>
           </div>
           
-           <button type="submit" class="submit-btn">
-            <a href="#">
+           <button type="submit" @click="downloadCv" class="submit-btn">
+       
             <span>Dowanload My CV</span>
-            </a>
+          
           </button>
       
 

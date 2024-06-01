@@ -8,6 +8,7 @@ const route = useRoute();
 //---------------------------------------------------
 const form = ref([]);
 const image = [];
+const cv = ref();
 
 onMounted(async () => {
   editAbout();
@@ -25,6 +26,10 @@ const handleFileChange = async (event) => {
   image.value = event.target.files[0];
 };
 
+const handleFileCV = async (event) => {
+  cv.value = event.target.files[0];
+};
+
 const updateAbout = async () => {
    let id = route.params.id;
   const formData = new FormData();
@@ -34,6 +39,7 @@ const updateAbout = async () => {
   formData.append("complete_project", form.value.complete_project);
   formData.append("year_experience", form.value.year_experience);
   formData.append("image", image.value);
+  formData.append("cv", cv.value);
 
 
     let response = await axios.post(`/api/update_about/${id}`, formData).then(() => {
@@ -89,6 +95,14 @@ const updateAbout = async () => {
           @change="handleFileChange"
           type="file"
           placeholder="Product Image"
+          name="psw"
+          required
+        />
+
+        <label for="psw"><b> CV</b></label>
+        <input
+          @change="handleFileCV"
+          type="file"
           name="psw"
           required
         />

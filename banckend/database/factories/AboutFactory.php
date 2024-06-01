@@ -28,7 +28,7 @@ class AboutFactory extends Factory
             'image' => 'https://static.vecteezy.com/system/resources/previews/020/389/525/original/hand-drawing-cartoon-girl-cute-girl-drawing-for-profile-picture-vector.jpg',
             'complete_project' => 57,
             'year_experience' => 1,
-            'cv' => '',
+            'cv' => 'file:///C:/Users/dasni/Downloads/puja.pdf',
         ];
     }
 }

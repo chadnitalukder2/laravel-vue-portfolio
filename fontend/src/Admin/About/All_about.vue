@@ -32,7 +32,7 @@ const closeModalDelete = () => {
 <template>
   <div class="container">
     <div class="table-box" >
-      <div class="btn" v-if=" abouts == ''">
+      <div class="btn" v-if="! abouts == ''">
           <router-link :to="{ name: 'Add-about' }" >
             Add About
           </router-link>
@@ -47,6 +47,7 @@ const closeModalDelete = () => {
           <th>Description</th>
           <th>Total Project</th>
           <th>Year Experience</th>
+          <th> CV</th>
           <th>Action</th>
         </tr>
         <tbody  v-for="item in abouts" :key="item.id">
@@ -63,6 +64,7 @@ const closeModalDelete = () => {
             <td> {{ item.description }}</td>
              <td> {{ item.complete_project }}</td>
               <td> {{ item.year_experience }}</td>
+               <td> {{ item.cv }}</td>
             <td>
             <router-link :to="{ name: 'edit-about', params: { id: item.id } }">Edit</router-link>
             </td>

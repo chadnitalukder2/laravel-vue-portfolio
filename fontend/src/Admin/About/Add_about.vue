@@ -6,9 +6,14 @@ const router = useRouter();
 //---------------------------------------------------
 const form = ref([]);
 const image = [];
+const cv = ref();
 
 const handleFileChange = async (event) => {
   image.value = event.target.files[0];
+};
+
+const handleFileCV = async (event) => {
+  cv.value = event.target.files[0];
 };
 
 const addAbout = async () => {
@@ -19,6 +24,7 @@ const addAbout = async () => {
   formData.append("complete_project", form.value.complete_project);
   formData.append("year_experience", form.value.year_experience);
   formData.append("image", image.value);
+  formData.append("cv", cv.value);
 
   console.log({ formData });
   let response = await axios.post("/api/add_about", formData);
@@ -75,6 +81,13 @@ const addAbout = async () => {
           required
         />
 
+         <label for="psw"><b> CV</b></label>
+        <input
+          @change="handleFileCV"
+          type="file"
+          name="psw"
+          required
+        />
 
         <br /><br />
         <button type="submit">Add Data</button>

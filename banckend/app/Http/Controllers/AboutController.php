@@ -32,6 +32,10 @@ class AboutController extends Controller
         $imagePath = $request->file('image')->store('about_img', 'public');
         $imagePath = asset('storage/' . $imagePath);
 
+        // Handle cv upload
+        $cvPath = $request->file('cv')->store('cv', 'public');
+        $cvPath = asset('storage/' . $cvPath);
+
         About::insert([
             'title' => $request->title,
             'short_title' => $request->short_title,
@@ -39,6 +43,7 @@ class AboutController extends Controller
             'complete_project' => $request->complete_project,
             'year_experience' => $request->year_experience,
             'image' =>  $imagePath,
+            'cv' =>  $cvPath,
             'created_at' => Carbon::now(),
         ]);
         return response()->json([
@@ -60,6 +65,9 @@ class AboutController extends Controller
         $imagePath = $request->file('image')->store('about_img', 'public');
         $imagePath = asset('storage/' . $imagePath);
 
+        $cvPath = $request->file('cv')->store('cv', 'public');
+        $cvPath = asset('storage/' . $cvPath);
+
         $allData->update([
             'title' => $request->title,
             'short_title' => $request->short_title,
@@ -67,6 +75,7 @@ class AboutController extends Controller
             'complete_project' => $request->complete_project,
             'year_experience' => $request->year_experience,
             'image' =>  $imagePath,
+            'cv' =>  $cvPath,
             'updated_at' => Carbon::now(),
         ]);
     }//End Method

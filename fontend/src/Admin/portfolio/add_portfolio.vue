@@ -21,12 +21,14 @@ const handleFileChange = async (event) => {
   image.value = event.target.files[0];
 };
 
+
 const addPortfolio = async () => {
    const formData = new FormData();
   formData.append("title", form.value.title);
   formData.append("short_title", form.value.short_title);
     formData.append("service_id", form.value.service_id);
   formData.append("image", image.value);
+  formData.append("cv", cv.value);
 
   console.log({ formData });
   let response = await axios.post("/api/add_portfolio", formData);

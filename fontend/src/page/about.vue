@@ -22,6 +22,16 @@ const getSetting = async () => {
     setting.value = response.data.setting;
 };
 
+// Function to handle CV download
+const downloadCv = () => {
+  const link = document.createElement('a');
+  link.href = abouts.value.cv; // Ensure this URL points to the CV file
+  link.setAttribute('download', 'CV.pdf'); // Specify the file name
+   link.setAttribute('target', '_blank');
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
 </script>
 
@@ -69,10 +79,8 @@ const getSetting = async () => {
           </div>
 
         <div style="display: flex; gap: 20px; padding-top: 10px; text-align: center;">
-          <button type="submit" class="submit-btn">
-            <a href="#">
+          <button type="submit"  @click="downloadCv" class="submit-btn" target="_blank">
             <span>Dowanload My CV</span>
-            </a>
           </button>
           <button type="submit" class="submit-btn">
             <a :href=" setting.github" target="_blank">
