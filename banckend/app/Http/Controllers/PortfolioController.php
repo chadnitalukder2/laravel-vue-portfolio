@@ -38,6 +38,8 @@ class PortfolioController extends Controller
             'service_id' => $request->service_id,
             'title' => $request->title,
             'short_title' => $request->short_title,
+            'github_url' => $request->github_url,
+            'live_url' => $request->live_url,
             'image' =>  $imagePath,
             'created_at' => Carbon::now(),
         ]);
@@ -65,6 +67,8 @@ class PortfolioController extends Controller
             'title' => $request->title,
             'service_id' => $request->service_id,
             'short_title' => $request->short_title,
+            'github_url' => $request->github_url,
+            'live_url' => $request->live_url,
             'image' =>  $imagePath,
             'updated_at' => Carbon::now(),
         ]);

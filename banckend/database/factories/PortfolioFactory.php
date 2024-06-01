@@ -20,6 +20,8 @@ class PortfolioFactory extends Factory
             'title' => 'App Development',
             'service_id' => 0,
             'short_title' => 'The best way to impress your web',
+            'github_url' => '',
+            'live_url' => '',
             'image' => 'https://www.ikea.com/us/en/images/products/billy-bookcase-white__1051907_pe845796_s5.jpg?f=s',
         ];
     }

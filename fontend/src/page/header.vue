@@ -63,7 +63,7 @@ const downloadCv = () => {
             </p>
           </div>
           
-           <button type="submit" @click="downloadCv" class="submit-btn">
+           <button type="submit" style="cursor: pointer;" @click="downloadCv" class="submit-btn">
        
             <span>Dowanload My CV</span>
           

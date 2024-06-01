@@ -68,7 +68,7 @@ watch(filter, (newValue, oldValue) => {
                 <p>{{ item.title }}</p>
                 <h3>{{ item.short_title }}</h3>
                 <div class="btn-link">
-                  <button><a href="#"> GitHub</a></button>
+                  <button><a :href="item.github_url"  target="_blank"> GitHub</a></button>
                   <button><a href="#"> Screenshot</a></button>
                 </div>
               </div>
@@ -239,10 +239,18 @@ watch(filter, (newValue, oldValue) => {
     border: 1px solid #ff6b00;
     padding: 8px 10px;
     border-radius: 6px;
+    transition: all .3s;
     a{
         font-size: 15px;
         text-decoration: none;
         color: #ff6b00;
+    }
+    &:hover{
+        border: 1px solid #fff;
+        background: #f67f2a;
+        a{
+        color: #fff;
+    }
     }
   }
 }

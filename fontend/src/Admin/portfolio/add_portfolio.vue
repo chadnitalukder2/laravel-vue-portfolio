@@ -22,13 +22,15 @@ const handleFileChange = async (event) => {
 };
 
 
+
 const addPortfolio = async () => {
    const formData = new FormData();
   formData.append("title", form.value.title);
   formData.append("short_title", form.value.short_title);
-    formData.append("service_id", form.value.service_id);
+  formData.append("service_id", form.value.service_id);
+  formData.append("github_url", form.value.github_url);
+  formData.append("live_url", form.value.live_url);
   formData.append("image", image.value);
-  formData.append("cv", cv.value);
 
   console.log({ formData });
   let response = await axios.post("/api/add_portfolio", formData);
@@ -63,6 +65,19 @@ const addPortfolio = async () => {
         <label for="uname"><b>Description </b></label>
         <textarea v-model="form.short_title" type="text" placeholder="description" rows="7"></textarea>
     
+         <label for="uname"><b>GitHub Url </b></label>
+        <input
+          v-model="form.github_url"
+          type="text"
+          placeholder="github url "
+        />
+
+         <label for="uname"><b>Live Url </b></label>
+        <input
+          v-model="form.live_url"
+          type="text"
+          placeholder="live url "
+        />
 
         <label for="psw"><b> Image</b></label>
         <input
@@ -72,7 +87,6 @@ const addPortfolio = async () => {
           name="psw"
           required
         />
-
 
         <br /><br />
         <button type="submit">Add Data</button>

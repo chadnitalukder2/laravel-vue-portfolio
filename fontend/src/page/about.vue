@@ -79,7 +79,7 @@ const downloadCv = () => {
           </div>
 
         <div style="display: flex; gap: 20px; padding-top: 10px; text-align: center;">
-          <button type="submit"  @click="downloadCv" class="submit-btn" target="_blank">
+          <button type="submit" style="cursor: pointer;"  @click="downloadCv" class="submit-btn" target="_blank">
             <span>Dowanload My CV</span>
           </button>
           <button type="submit" class="submit-btn">

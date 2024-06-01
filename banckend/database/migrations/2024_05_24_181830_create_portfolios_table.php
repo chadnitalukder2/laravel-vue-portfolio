@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('short_title');
             $table->string('image');
+            $table->string('github_url');
+            $table->string('live_url');
             $table->timestamps();
         });
     }

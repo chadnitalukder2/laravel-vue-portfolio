@@ -48,6 +48,8 @@ const closeModalDelete = () => {
           <th>Image </th>
           <th>Title </th>
           <th>Short Title</th>
+           <th>GitHub url</th>
+            <th>Live Url</th>
           <th>Action</th>
         </tr>
         <tbody  v-for="item in portfolio" :key="item.id">
@@ -75,6 +77,8 @@ const closeModalDelete = () => {
             </td>
             <td> {{ item.title }}</td>
             <td> {{ item.short_title }}</td>
+             <td> {{ item.github_url }}</td>
+              <td> {{ item.live_url }}</td>
             <td>
             <span  @click="openModalDelete(item.id)" style="background: red; margin-right: 5px; cursor: pointer;">Delete</span>
             <router-link :to="{ name: 'edit-portfolio', params: { id: item.id } }">Edit</router-link>
