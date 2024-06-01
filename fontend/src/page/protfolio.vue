@@ -67,6 +67,10 @@ watch(filter, (newValue, oldValue) => {
               <div class="info">
                 <p>{{ item.title }}</p>
                 <h3>{{ item.short_title }}</h3>
+                <div class="btn-link">
+                  <button><a href="#"> GitHub</a></button>
+                  <button><a href="#"> Screenshot</a></button>
+                </div>
               </div>
             </div>
            
@@ -227,4 +231,19 @@ watch(filter, (newValue, oldValue) => {
   }
 }
 
+.btn-link{
+  margin-top: 12px;
+  button{
+    background: #fff;
+    margin-right: 10px;
+    border: 1px solid #ff6b00;
+    padding: 8px 10px;
+    border-radius: 6px;
+    a{
+        font-size: 15px;
+        text-decoration: none;
+        color: #ff6b00;
+    }
+  }
+}
 </style>
