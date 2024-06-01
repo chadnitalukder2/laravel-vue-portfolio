@@ -22,7 +22,7 @@ const getExperience = async () => {
 <template>
     <div>
         <!-- service section start -->
-      <section class="service" id="service">
+      <section class="service" id="resume">
         <div class="container">
           <div class="row">
 
