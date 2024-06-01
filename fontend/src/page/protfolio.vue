@@ -46,17 +46,18 @@ watch(filter, (newValue, oldValue) => {
         </div>
         <div class="mobile-row">
           
-           <div class="controls">
-                        <button type="button" @click="filter.service_id = ''">All</button>
+          <div class="controls">
+                        <button type="button" :class="{ active: filter.service_id === '' }" @click="filter.service_id = ''">All</button>
                         <button
                             type="button"
                             v-for="item in services"
                             :key="item.id"
+                            :class="{ active: filter.service_id === item.id }"
                             @click="filter.service_id = item.id"
                         >
                             {{ item.title }}
                         </button>
-                    </div>
+          </div>
           <div class="portpoli-massonary">
             
             <div class="items " v-for="item in portfolio" :key="item.id">
@@ -141,6 +142,18 @@ watch(filter, (newValue, oldValue) => {
             }
           }
         }
+      }
+      .active{
+          &::after {
+              content: "";
+              position: absolute;
+              height: 2px;
+              width: 30%;
+              bottom: 0;
+              left: 50%;
+              transform: translatex(-50%);
+              background-color: var(--orange-color);
+            }
       }
 
       .portpoli-massonary {
