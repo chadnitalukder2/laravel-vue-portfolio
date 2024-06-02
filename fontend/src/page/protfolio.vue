@@ -1,4 +1,10 @@
 <script setup>
+import { defineComponent } from 'vue'
+import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
+
+import 'vue3-carousel/dist/carousel.css'
+import Modal from "../components/global/Modal.vue";
+
 import axios from "axios";
 import { ref , onMounted, watch } from "vue";
 import { useRouter } from "vue-router";
@@ -6,6 +12,15 @@ const router = useRouter();
 
 const portfolio = ref([]);
 const services = ref([]);
+const showModal = ref(false);;
+
+const openModal = () => {
+    showModal.value = true;
+};
+
+const closeModal = () => {
+    showModal.value = false;
+};
 
 const filter = ref({
     service_id: "",
@@ -34,9 +49,33 @@ watch(filter, (newValue, oldValue) => {
 
 <template>
     <div>
+        <Carousel>
+            <Slide v-for="slide in 10" :key="slide">
+              <div class="carousel__item">{{ slide }}</div>
+            </Slide>
+
+            <template #addons>
+              <Navigation />
+              <Pagination />
+            </template>
+        </Carousel>
          <!-- Protfolio start -->
+
+          <!-- modal start-->
+         <Modal :show="showModal" @close="closeModal">
+                    <div id="myModal" style="text-align: center;">
+                        <h4 style="margin-top: 20px; font-size: 26px; color: #636363; font-weight: 500;">Are you sure?</h4>
+                        <div class="modal-body">
+                            <p style="font-size: 14px; color: #999999;">Do you really want to delete these records? This process cannot be undone.</p>
+                        </div>
+                         
+                    </div>  
+          </Modal>
+         <!-- modal end -->
+
       <div class="portfolio" id="portfolio">
         <div class="container">
+         
         <div class="heading">
           <div class="sub-heading">
             <img src="../assets/img/orangeDot.png" alt="orange">
@@ -69,7 +108,7 @@ watch(filter, (newValue, oldValue) => {
                 <h3>{{ item.short_title }}</h3>
                 <div class="btn-link">
                   <button><a :href="item.github_url"  target="_blank"> GitHub</a></button>
-                  <button><a href="#"> Screenshot</a></button>
+                  <button @click="openModal"><a href="#"> Screenshot</a></button>
                 </div>
               </div>
             </div>
@@ -254,4 +293,49 @@ watch(filter, (newValue, oldValue) => {
     }
   }
 }
+
+.carousel__item {
+  min-height: 200px;
+  width: 100%;
+  background-color: var(--vc-clr-primary);
+  color: var(--vc-clr-white);
+  font-size: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel__slide {
+  padding: 10px;
+}
+
+.carousel__prev,
+.carousel__next {
+  box-sizing: content-box;
+  border: 5px solid white;
+}
+
+#myModal{
+.modal_footer{
+  button{
+  
+  cursor: pointer;
+  background: #c1c1c1;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  min-width: 120px;
+  border: none;
+  min-height: 40px;
+  border-radius: 3px;
+  margin: 0 5px;
+  }
+ 
+}
+ 
+}
+
 </style>
