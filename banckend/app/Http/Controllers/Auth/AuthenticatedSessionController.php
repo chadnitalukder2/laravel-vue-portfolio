@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -13,13 +14,26 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
+    public function create(): View
+    {
+        return view('auth.login');
+    }
+
     public function store(LoginRequest $request): Response
     {
         $request->authenticate();
 
         $request->session()->regenerate();
+        
+        $url = '';
+        if ($request->user()->role === 'admin') {
+            $url = '/admin/dashboard';
+        } elseif ($request->user()->role === 'user') {
+            $url = '/';
+        }
+       
 
-        return response()->noContent();
+        return response()->noContent($url);
     }
 
     /**
