@@ -52,8 +52,8 @@ const downloadCv = () => {
             <h1>
               {{ headerData.title  }}
               <span class="wrapper">
-                <b class="visible">Solution</b>
-                <b class="hidden">Design</b>
+                <b class="visible">Chadni</b>
+                <b class="hidden">Talukder</b>
               </span>
             </h1>
           </div>
