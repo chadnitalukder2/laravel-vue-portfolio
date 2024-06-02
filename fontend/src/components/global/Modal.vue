@@ -17,7 +17,7 @@
       },
       width: {
         type: String,
-        default: '40%'
+        default: '50%'
       }
     },
     methods: {

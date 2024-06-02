@@ -85,16 +85,18 @@ watch(filter, (newValue, oldValue) => {
                 <!-- modal start-->
                   <Modal :show="showModal" @close="closeModal">
                       <div id="myModal" style="text-align: center;">
-                          <h4 style="margin-top: 20px; font-size: 26px; color: #636363; font-weight: 500;">Are you sure?</h4>
+                          <h4 style="margin-top: 20px; font-size: 26px; color: #636363; font-weight: 500;">{{ item.title }}</h4>
                           <div class="modal-body">
-                              <p style="font-size: 14px; color: #999999;">Do you really want to delete these records? This process cannot be undone.</p>
+                              <p style="font-size: 14px; color: #999999; text-align: center; padding-bottom: 20px;">{{ item.short_title }}</p>
                               <Carousel>
                                 
                                   <Slide v-for="image in modalImages" :key="image.id">
-                                      
-                                          <img :src="image.multi_image" width="100%" height="400px">
-                    
+                                         <div v-if="image !== ''">
+                                           <img :src="image.multi_image" width="100%" height="400px">
+                                        </div>
                                   </Slide>
+                                  <p></p>
+                                    
 
                                   <template #addons>
                                       <Navigation />
