@@ -12,6 +12,7 @@ const router = useRouter();
 
 const portfolio = ref([]);
 const services = ref([]);
+const multi_image = ref([]);
 const showModal = ref(false);;
 
 const openModal = () => {
@@ -29,7 +30,13 @@ const filter = ref({
 onMounted(async () => {
   getPortfolio();
   getService();
+  getMultiImage();
 });
+
+const getMultiImage = async () => {
+  let response = await axios.get("/api/get_multi_image");
+    multi_image.value = response.data.multi_images;
+};
 
 const getPortfolio = async () => {
   let response = await axios.get("/api/get_portfolio",{ params : { filter: filter.value }}  );
@@ -49,29 +56,31 @@ watch(filter, (newValue, oldValue) => {
 
 <template>
     <div>
-        <Carousel>
-            <Slide v-for="slide in 10" :key="slide">
-              <div class="carousel__item">{{ slide }}</div>
-            </Slide>
-
-            <template #addons>
-              <Navigation />
-              <Pagination />
-            </template>
-        </Carousel>
+       
          <!-- Protfolio start -->
 
-          <!-- modal start-->
-         <Modal :show="showModal" @close="closeModal">
-                    <div id="myModal" style="text-align: center;">
-                        <h4 style="margin-top: 20px; font-size: 26px; color: #636363; font-weight: 500;">Are you sure?</h4>
-                        <div class="modal-body">
-                            <p style="font-size: 14px; color: #999999;">Do you really want to delete these records? This process cannot be undone.</p>
-                        </div>
-                         
-                    </div>  
-          </Modal>
-         <!-- modal end -->
+            <!-- modal start-->
+        <Modal :show="showModal" @close="closeModal">
+            <div id="myModal" style="text-align: center;">
+                <h4 style="margin-top: 20px; font-size: 26px; color: #636363; font-weight: 500;">Are you sure?</h4>
+                <div class="modal-body">
+                    <p style="font-size: 14px; color: #999999;">Do you really want to delete these records? This process cannot be undone.</p>
+                    <Carousel>
+                        <Slide v-for="slide in 10" :key="slide">
+                            <div v-for="item in multi_image" :key="item.id">
+                                <img :src="item.multi_image" width="100%" height="400px">
+                            </div>
+                        </Slide>
+
+                        <template #addons>
+                            <Navigation />
+                            <Pagination />
+                        </template>
+                    </Carousel>
+                </div>
+            </div>
+        </Modal>
+        <!-- modal end -->
 
       <div class="portfolio" id="portfolio">
         <div class="container">

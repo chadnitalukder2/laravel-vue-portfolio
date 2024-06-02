@@ -157,7 +157,9 @@ class PortfolioController extends Controller
 
     public function getMultiImage()
     {
+
         $multi_images = PortfoliomultiImage::orderBy('id', 'desc')->get();
+
 
         return response()->json([
             'multi_images' => $multi_images,
