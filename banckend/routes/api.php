@@ -60,6 +60,11 @@ Route::controller(PortfolioController::class)->group(function () {
     Route::get('/edit_portfolio/{id}', 'editPortfolio')->name('edit_portfolio');
     Route::post('/update_portfolio/{id}', 'updatePortfolio')->name('update_portfolio');
     Route::get('/delete_portfolio/{id}', 'deletePortfolio')->name('delete_portfolio');
+
+    Route::get('/get_multi_image', 'getMultiImage')->name('get_multi_image');
+    Route::get('/delete_image/{id}', 'deleteImage')->name('delete_image');
+    Route::get('/edit_image/{id}', 'editImage')->name('edit_image');
+    Route::post('/update_image/{id}', 'updateImage')->name('update_image');
 });
 
 Route::controller(BlogController::class)->group(function () {

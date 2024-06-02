@@ -142,12 +142,6 @@ const routes = [
         meta: { requiresAuth: true, adminAuthRequired: true },
       },
       {
-        path: "/add-multi-img",
-        name: "add-multi-img",
-        component: () => import("../Admin/portfolio/add_multi_img.vue"),
-        meta: { requiresAuth: true, adminAuthRequired: true },
-      },
-      {
         path: "/edit-multi-img/:id",
         name: "edit-multi-img",
         component: () => import("../Admin/portfolio/edit_multi_img.vue"),

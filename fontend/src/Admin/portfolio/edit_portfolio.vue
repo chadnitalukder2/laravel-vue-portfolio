@@ -5,10 +5,12 @@ import { useRouter } from "vue-router";
 import { useRoute } from "vue-router";
 const router = useRouter();
 const route = useRoute();
+
 //---------------------------------------------------
 const form = ref([]);
 const image = [];
 const services = ref([]);
+const multi_image = ref([]);
 
 onMounted(async () => {
   editPortfolio();
@@ -29,18 +31,32 @@ const handleFileChange = async (event) => {
   image.value = event.target.files[0];
 };
 
+const onFileChange = async (event) => {
+  multi_image.value = Array.from(event.target.files);
+};
+
 const updatePortfolio = async () => {
     let id = route.params.id;
     const formData = new FormData();
     formData.append("title", form.value.title);
     formData.append("short_title", form.value.short_title);
-    formData.append("service_id", form.value.service_id);
+  formData.append("service_id", form.value.service_id);
+  formData.append("github_url", form.value.github_url);
+    formData.append("live_url", form.value.live_url);
     formData.append("image", image.value);
+
+   multi_image.value.forEach((file, index) => {
+    formData.append(`multi_image[]`, file);
+  });
   
-    let response = await axios.post(`/api/update_portfolio/${id}`, formData).then(() => {
+    let response = await axios.post(`/api/update_portfolio/${id}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }).then(() => {
       router.push("/all-portfolio");
   })
-
+  console.log('response', response);
 };
 
 
@@ -71,7 +87,20 @@ const updatePortfolio = async () => {
 
         <label for="uname"><b>Description </b></label>
         <textarea v-model="form.short_title" type="text" placeholder="description" rows="7"></textarea>
-    
+   
+         <label for="uname"><b>GitHub Url </b></label>
+        <input
+          v-model="form.github_url"
+          type="text"
+          placeholder="github url "
+        />
+
+         <label for="uname"><b>Live Url </b></label>
+        <input
+          v-model="form.live_url"
+          type="text"
+          placeholder="live url "
+        />
 
         <label for="psw"><b> Image</b></label>
         <input
@@ -81,6 +110,9 @@ const updatePortfolio = async () => {
           name="psw"
           required
         />
+
+         <label for="psw"><b>Multi Image</b></label>
+        <input type="file" @change="onFileChange" multiple>
 
 
         <br /><br />

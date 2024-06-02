@@ -5,21 +5,21 @@ import { ref , onMounted} from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
-const portfolio = ref([]);
+const multi_image = ref([]);
 const deleteVisibleId = ref(null);
 
 onMounted(async () => {
-  getPortfolio();
+  getMultiImage();
 });
 
-const getPortfolio = async () => {
-  let response = await axios.get("/api/get_portfolio");
-    portfolio.value = response.data.portfolio;
+const getMultiImage = async () => {
+  let response = await axios.get("/api/get_multi_image");
+    multi_image.value = response.data.multi_images;
 };
-console.log('portfolio', portfolio.value  )
-const deletePortfolio = (id) => {
-  axios.get(`/api/delete_portfolio/${id}`).then(() => {
-    getPortfolio();
+
+const deleteImage = (id) => {
+  axios.get(`/api/delete_image/${id}`).then(() => {
+    getMultiImage();
   });
 };
 
@@ -35,12 +35,7 @@ const closeModalDelete = () => {
 <template>
   <div class="container" style="flex: auto;">
     <div class="table-box" >
-      <div class="btn" >
-          <router-link :to="{ name: 'add-portfolio' }" >
-            Add Portfolio
-          </router-link>
-      </div>
-      <h1>All Portfolio Data</h1>
+      <h1>All Portfolio Multi Image</h1>
       <table id="customers">
         <tr>
           <th>#ID</th>
@@ -48,7 +43,7 @@ const closeModalDelete = () => {
           <th>Image </th>
           <th>Action</th>
         </tr>
-        <tbody  v-for="item in portfolio" :key="item.id">
+        <tbody  v-for="item in multi_image" :key="item.id">
            <Modal :show="deleteVisibleId === item.id" @close="closeModalDelete">
                     <div id="myModal" style="text-align: center;">
                         <h4 style="margin-top: 20px; font-size: 26px; color: #636363; font-weight: 500;">Are you sure?</h4>
@@ -57,22 +52,22 @@ const closeModalDelete = () => {
                         </div>
                         <div class="modal_footer" style="padding: 20px;" >
                             <!-- <button @close="closeModalDelete" type="button" class="secondary" >Cancel</button> -->
-                            <button @click="deletePortfolio(item.id)" type="button" style="background: #f15e5e;">Delete</button>
+                            <button @click="deleteImage(item.id)" type="button" style="background: #f15e5e;">Delete</button>
                         </div>   
                     </div>  
            </Modal>
           <tr>
             <td>{{ item.id }}</td>
-            <td> {{ item.live_url }}</td>
+            <td> {{ item.portfolio_id }}</td>
             <td style="width: 70px; height: 60px">
               <img
-                 :src="item.image"
+                 :src="item.multi_image"
                 style="width: 100%; height: 100%"
               />
             </td>
             <td>
             <span  @click="openModalDelete(item.id)" style="background: red; margin-right: 5px; cursor: pointer;">Delete</span>
-            <router-link :to="{ name: 'edit-portfolio', params: { id: item.id } }">Edit</router-link>
+            <router-link :to="{ name: 'edit-multi-img', params: { id: item.id } }">Edit</router-link>
             </td>
           </tr>
         </tbody>
