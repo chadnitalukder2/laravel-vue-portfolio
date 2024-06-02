@@ -7,6 +7,7 @@ const router = useRouter();
 const form = ref([]);
 const image = ref();
 const services = ref([]);
+const multi_image = ref([]);
 
 onMounted(async () => {
   getService();
@@ -21,10 +22,14 @@ const handleFileChange = async (event) => {
   image.value = event.target.files[0];
 };
 
+const onFileChange = async (event) => {
+  multi_image.value = Array.from(event.target.files);
+};
 
 
 const addPortfolio = async () => {
-   const formData = new FormData();
+  const formData = new FormData();
+     formData.append("id", form.value.id);
   formData.append("title", form.value.title);
   formData.append("short_title", form.value.short_title);
   formData.append("service_id", form.value.service_id);
@@ -32,8 +37,16 @@ const addPortfolio = async () => {
   formData.append("live_url", form.value.live_url);
   formData.append("image", image.value);
 
+   multi_image.value.forEach((file, index) => {
+    formData.append(`multi_image[]`, file);
+  });
+
   console.log({ formData });
-  let response = await axios.post("/api/add_portfolio", formData);
+  let response = await axios.post("/api/add_portfolio", formData , {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    });
   router.push("/all-portfolio");
 };
 
@@ -49,6 +62,7 @@ const addPortfolio = async () => {
     <form @submit.prevent="addPortfolio"  enctype="multipart/form-data">
       <h1>Add Portfolio Data</h1>
       <div class="container">
+        <input type="hidden" v-model="form.id">
          <label for="uname"><b>Title </b></label>
         <input
           v-model="form.title"
@@ -87,6 +101,9 @@ const addPortfolio = async () => {
           name="psw"
           required
         />
+
+        <label for="psw"><b>Multi Image</b></label>
+        <input type="file" @change="onFileChange" multiple>
 
         <br /><br />
         <button type="submit">Add Data</button>

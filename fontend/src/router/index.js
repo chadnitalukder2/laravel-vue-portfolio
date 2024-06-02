@@ -136,6 +136,25 @@ const routes = [
       },
 
       {
+        path: "/all-multi-img",
+        name: "all-multi-img",
+        component: () => import("../Admin/portfolio/all_multi_img.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+      {
+        path: "/add-multi-img",
+        name: "add-multi-img",
+        component: () => import("../Admin/portfolio/add_multi_img.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+      {
+        path: "/edit-multi-img/:id",
+        name: "edit-multi-img",
+        component: () => import("../Admin/portfolio/edit_multi_img.vue"),
+        meta: { requiresAuth: true, adminAuthRequired: true },
+      },
+
+      {
         path: "/all-blog",
         name: "all-blog",
         component: () => import("../Admin/Blog/all_blog.vue"),

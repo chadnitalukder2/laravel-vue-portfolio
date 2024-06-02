@@ -131,6 +131,8 @@ class AboutController extends Controller
 
     public function deleteExperience($id){
         $experience = Experience::findOrFail($id);
+        $img = $experience->image;
+        unlink($img);
         $experience->delete();
     }//End Method
 }

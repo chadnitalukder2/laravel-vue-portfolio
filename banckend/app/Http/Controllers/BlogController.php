@@ -56,6 +56,8 @@ class BlogController extends Controller
 
     public function deleteBlog($id){
         $blog = Blog::findOrFail($id);
+        $img = $blog->image;
+        unlink($img);
         $blog->delete();
     }//End Method
 }
