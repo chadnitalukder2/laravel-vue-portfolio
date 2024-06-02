@@ -13,7 +13,7 @@ class PortfolioController extends Controller
     public function getPortfolio(Request $request){
         $queryParams = Arr::get($request, 'filter', []);
 
-        $portfolio = Portfolio::with('service')
+        $portfolio = Portfolio::with('service','multi_image')
             ->when(isset($queryParams['service_id']), function ($query) use ($queryParams) {
                 return $query->where('service_id', $queryParams['service_id']);
             })

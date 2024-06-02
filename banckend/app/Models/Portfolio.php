@@ -12,4 +12,8 @@ class Portfolio extends Model
     public function service(){
         return $this->belongsTo(Service::class, 'service_id');
     }
+    public function multi_image()
+    {
+        return $this->hasMany(PortfoliomultiImage::class, 'portfolio_id' ,'id');
+    }
 }

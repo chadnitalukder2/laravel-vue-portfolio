@@ -12,14 +12,15 @@ const router = useRouter();
 
 const portfolio = ref([]);
 const services = ref([]);
-const multi_image = ref([]);
-const showModal = ref(false);;
+const showModal = ref(false);
+const modalImages = ref([]);
 
-const openModal = () => {
+const openModal = (images) => {
+   modalImages.value = images;
     showModal.value = true;
 };
 
-const closeModal = () => {
+const closeModal = (images) => {
     showModal.value = false;
 };
 
@@ -30,18 +31,14 @@ const filter = ref({
 onMounted(async () => {
   getPortfolio();
   getService();
-  getMultiImage();
 });
-
-const getMultiImage = async () => {
-  let response = await axios.get("/api/get_multi_image");
-    multi_image.value = response.data.multi_images;
-};
 
 const getPortfolio = async () => {
   let response = await axios.get("/api/get_portfolio",{ params : { filter: filter.value }}  );
-    portfolio.value = response.data.portfolio;
+  portfolio.value = response.data.portfolio;
+    console.log('responsePortfolio', response);
 };
+
 
 const getService = async () => {
   let response = await axios.get("/api/get_service");
@@ -58,29 +55,6 @@ watch(filter, (newValue, oldValue) => {
     <div>
        
          <!-- Protfolio start -->
-
-            <!-- modal start-->
-        <Modal :show="showModal" @close="closeModal">
-            <div id="myModal" style="text-align: center;">
-                <h4 style="margin-top: 20px; font-size: 26px; color: #636363; font-weight: 500;">Are you sure?</h4>
-                <div class="modal-body">
-                    <p style="font-size: 14px; color: #999999;">Do you really want to delete these records? This process cannot be undone.</p>
-                    <Carousel>
-                        <Slide v-for="slide in 10" :key="slide">
-                            <div v-for="item in multi_image" :key="item.id">
-                                <img :src="item.multi_image" width="100%" height="400px">
-                            </div>
-                        </Slide>
-
-                        <template #addons>
-                            <Navigation />
-                            <Pagination />
-                        </template>
-                    </Carousel>
-                </div>
-            </div>
-        </Modal>
-        <!-- modal end -->
 
       <div class="portfolio" id="portfolio">
         <div class="container">
@@ -107,8 +81,30 @@ watch(filter, (newValue, oldValue) => {
                         </button>
           </div>
           <div class="portpoli-massonary">
-            
             <div class="items " v-for="item in portfolio" :key="item.id">
+                <!-- modal start-->
+                  <Modal :show="showModal" @close="closeModal">
+                      <div id="myModal" style="text-align: center;">
+                          <h4 style="margin-top: 20px; font-size: 26px; color: #636363; font-weight: 500;">Are you sure?</h4>
+                          <div class="modal-body">
+                              <p style="font-size: 14px; color: #999999;">Do you really want to delete these records? This process cannot be undone.</p>
+                              <Carousel>
+                                
+                                  <Slide v-for="image in modalImages" :key="image.id">
+                                      
+                                          <img :src="image.multi_image" width="100%" height="400px">
+                    
+                                  </Slide>
+
+                                  <template #addons>
+                                      <Navigation />
+                                      <Pagination />
+                                  </template>
+                              </Carousel>
+                          </div>
+                      </div>
+                  </Modal>
+                  <!-- modal end -->
               <div class="hidden">
               </div>
               <img :src="item.image">
@@ -117,7 +113,7 @@ watch(filter, (newValue, oldValue) => {
                 <h3>{{ item.short_title }}</h3>
                 <div class="btn-link">
                   <button><a :href="item.github_url"  target="_blank"> GitHub</a></button>
-                  <button @click="openModal"><a href="#"> Screenshot</a></button>
+                  <button @click="openModal(item.multi_image)"><a href="#"> Screenshot</a></button>
                 </div>
               </div>
             </div>
