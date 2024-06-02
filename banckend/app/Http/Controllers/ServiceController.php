@@ -49,8 +49,18 @@ class ServiceController extends Controller
     public function updateService(Request $request, $id){
         $services = Service::where('id', $id)->first();
 
-        $imagePath = $request->file('image')->store('service_img', 'public');
-        $imagePath = asset('storage/' . $imagePath);
+        if ($request->hasFile('image')) {
+            // Delete the old image
+            if (file_exists(public_path($services->image))) {
+                unlink(public_path($services->image));
+            }
+            // Store the new image
+            $imagePath = $request->file('image')->store('service_img', 'public');
+            $imagePath = asset('storage/' . $imagePath);
+
+            $services->image = $imagePath;
+        }
+
 
         $services->update([
             'title' => $request->title,

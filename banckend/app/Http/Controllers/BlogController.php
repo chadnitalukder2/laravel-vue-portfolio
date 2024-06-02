@@ -44,8 +44,18 @@ class BlogController extends Controller
     public function updateBlog(Request $request, $id){
         $blogs = Blog::where('id', $id)->first();
 
-        $imagePath = $request->file('image')->store('blog_img', 'public');
-        $imagePath = asset('storage/' . $imagePath);
+
+        if ($request->hasFile('image')) {
+            // Delete the old image
+            if (file_exists(public_path($blogs->image))) {
+                unlink(public_path($blogs->image));
+            }
+            // Store the new image
+            $imagePath = $request->file('image')->store('blog_img', 'public');
+            $imagePath = asset('storage/' . $imagePath);
+
+            $blogs->image = $imagePath;
+        }
 
         $blogs->update([
             'title' => $request->title,

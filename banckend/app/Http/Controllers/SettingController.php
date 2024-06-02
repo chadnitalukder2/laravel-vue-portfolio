@@ -61,6 +61,7 @@ class SettingController extends Controller
     {
         $setting = Setting::where('id', $id)->first();
 
+        
         $imagePath = $request->file('logo_img')->store('setting_img', 'public');
         $imagePath = asset('storage/' . $imagePath);
 

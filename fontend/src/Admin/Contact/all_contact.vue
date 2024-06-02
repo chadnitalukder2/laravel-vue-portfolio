@@ -1,4 +1,7 @@
 <script setup>
+import { useNotification } from '@kyvg/vue3-notification';
+const { notify } = useNotification();
+
 import Modal from "../../components/global/Modal.vue";
 import axios from "axios";
 import { ref , onMounted} from "vue";
@@ -19,6 +22,10 @@ const getContact = async () => {
 
 const deleteContact = (id) => {
   axios.get(`/api/delete_contact/${id}`).then(() => {
+      notify({
+      title: "Message Item Deleted",
+      type: "success",
+    });
     getContact();
   });
 };

@@ -27,6 +27,7 @@ class HeaderController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif',
 
         ]);
+
         $imagePath = $request->file('image')->store('header_img', 'public');
         $imagePath = asset('storage/' . $imagePath);
 
@@ -53,8 +54,18 @@ class HeaderController extends Controller
     public function updateHeaderData(Request $request, $id){
         $allData = Header::where('id' , $id)->first();
 
-        $imagePath = $request->file('image')->store('header_img', 'public');
-        $imagePath = asset('storage/' . $imagePath);
+        if ($request->hasFile('image')) {
+            // Delete the old image
+            if (file_exists(public_path($allData->image))) {
+                unlink(public_path($allData->image));
+            }
+            // Store the new image
+            $imagePath = $request->file('image')->store('header_img', 'public');
+            $imagePath = asset('storage/' . $imagePath);
+
+            $allData->image = $imagePath;
+        }
+
 
         $allData->update(['title' => $request->title,
             'short_title' => $request->short_title,

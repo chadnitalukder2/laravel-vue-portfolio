@@ -32,7 +32,7 @@ const closeModalDelete = () => {
 <template>
   <div class="container">
     <div class="table-box" >
-      <div class="btn" v-if="! abouts == ''">
+      <div class="btn" v-if=" abouts == ''">
           <router-link :to="{ name: 'Add-about' }" >
             Add About
           </router-link>

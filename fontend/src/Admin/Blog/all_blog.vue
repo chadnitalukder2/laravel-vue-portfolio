@@ -21,7 +21,7 @@ console.log('blog', blogs.value)
 const deleteBlog = (id) => {
   axios.get(`/api/delete_blog/${id}`).then(() => {
     notify({
-      title: "Brand Item Deleted",
+      title: "Blog Item Deleted",
       type: "success",
     });
     getBlog();

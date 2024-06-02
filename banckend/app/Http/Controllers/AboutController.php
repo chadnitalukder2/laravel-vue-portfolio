@@ -119,9 +119,18 @@ class AboutController extends Controller
     {
         $experiences = Experience::where('id', $id)->first();
 
-        $imagePath = $request->file('image')->store('resume_img', 'public');
-        $imagePath = asset('storage/' . $imagePath);
+        if ($request->hasFile('image')) {
+            // Delete the old image
+            if (file_exists(public_path($experiences->image))) {
+                unlink(public_path($experiences->image));
+            }
+            // Store the new image
+            $imagePath = $request->file('image')->store('resume_img', 'public');
+            $imagePath = asset('storage/' . $imagePath);
 
+            $experiences->image = $imagePath;
+        }
+        
         $experiences->update([
             'experience' => $request->experience,
             'image' =>  $imagePath,

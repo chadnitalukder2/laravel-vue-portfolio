@@ -1,6 +1,7 @@
 <script setup>
 import Modal from "../../components/global/Modal.vue";
 import axios from "axios";
+
 import { ref , onMounted} from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
@@ -19,6 +20,10 @@ const getSetting = async () => {
 
 const deleteSetting = (id) => {
   axios.get(`/api/delete_setting/${id}`).then(() => {
+     notify({
+      title: "Setting Item Deleted",
+      type: "success",
+    });
     getSetting();
   });
 };

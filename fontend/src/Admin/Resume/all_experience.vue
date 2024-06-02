@@ -1,4 +1,7 @@
 <script setup>
+import { useNotification } from '@kyvg/vue3-notification';
+const { notify } = useNotification();
+
 import Modal from "../../components/global/Modal.vue";
 import axios from "axios";
 import { ref , onMounted} from "vue";
@@ -19,6 +22,10 @@ const getExperience = async () => {
 };
 const deleteExperience = (id) => {
   axios.get(`/api/delete_experience/${id}`).then(() => {
+     notify({
+      title: "Resume Item Deleted",
+      type: "success",
+    });
     getExperience();
   });
 };
