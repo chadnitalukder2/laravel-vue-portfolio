@@ -4,7 +4,7 @@ import About from '../page/about.vue';
 import Services from '../page/services.vue';
 import Resume from '../page/resume.vue';
 import Portfolio from '../page/protfolio.vue';
-import Blog from '../page/blog.vue';
+// import Blog from '../page/blog.vue';
 import Contact from '../page/contact.vue';
 
 </script>
@@ -16,7 +16,7 @@ import Contact from '../page/contact.vue';
      <Services></Services>
      <Resume></Resume>
      <Portfolio></Portfolio>
-     <Blog></Blog>
+     <!-- <Blog></Blog> -->
      <Contact></Contact>
     </div>
 </template>

@@ -91,11 +91,10 @@ watch(filter, (newValue, oldValue) => {
                               <Carousel>
                                 
                                   <Slide v-for="image in modalImages" :key="image.id">
-                                         <div v-if="image !== ''">
+                                         <div >
                                            <img :src="image.multi_image" width="100%" height="400px">
                                         </div>
                                   </Slide>
-                                  <p></p>
                                     
 
                                   <template #addons>

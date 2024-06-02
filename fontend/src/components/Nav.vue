@@ -75,7 +75,7 @@ const getUser = async () => {
             <span></span>
             <li><a href="#portfolio">PORTFOLIO</a></li>
             <span></span>
-            <li><a href="#blog">BLOG</a></li>
+            <!-- <li><a href="#blog">BLOG</a></li> -->
             <span></span>
             <li><a href="#contact">CONTACT</a></li>
             <li v-if="!state.loggedIn" >
@@ -105,7 +105,7 @@ const getUser = async () => {
             <li><a href="#service">Services</a></li>
             <li><a href="#resume">Resume</a></li>
             <li><a href="#portfolio">Protfolio</a></li>
-            <li><a href="#blog">Blog</a></li>
+            <!-- <li><a href="#blog">Blog</a></li> -->
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
