@@ -49,6 +49,7 @@ const downloadCv = () => {
           </div>
 
           <div class="animate-heading">
+            
             <h1>
               {{ headerData.title  }}
               <span class="wrapper">
@@ -56,6 +57,7 @@ const downloadCv = () => {
                 <b class="hidden">Talukder</b>
               </span>
             </h1>
+
           </div>
           <div class="info">
             <p>
