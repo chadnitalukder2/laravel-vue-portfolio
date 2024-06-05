@@ -49,7 +49,7 @@ const downloadCv = () => {
           </div>
 
           <div class="animate-heading">
-            
+
             <h1>
               {{ headerData.title  }}
               <span class="wrapper">
@@ -71,8 +71,6 @@ const downloadCv = () => {
           
           </button>
       
-
-          
           <div class="down-banner">
             <img src="../assets/img/particleTwo.png" alt="tow" />
           </div>
