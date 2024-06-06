@@ -52,10 +52,10 @@ const downloadCv = () => {
 
             <h1>
               {{ headerData.title  }}
-              <span class="wrapper">
+              <!-- <span class="wrapper">
                 <b class="visible">Chadni</b>
                 <b class="hidden">Talukder</b>
-              </span>
+              </span> -->
             </h1>
 
           </div>
@@ -196,11 +196,6 @@ const downloadCv = () => {
     .image{
           margin: 0 auto;
           display: flex;
-          width: 290px;
-          height: 320px;
-          box-shadow: 0px 0px 0px 4px #ff6b00;
-          margin-top: 30%;
-          border-radius: 6px;
           overflow: hidden;
         @media only screen and (max-width: 992px) {
           width: 100%;
@@ -240,7 +235,7 @@ const downloadCv = () => {
     
     .bg-img {
       
-          margin-top: 20%;
+          margin-top: 60px;
         img {
           margin: 49px 91px;
           position: absolute;
