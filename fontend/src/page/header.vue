@@ -147,7 +147,7 @@ const downloadCv = () => {
       }
     }
     .animate-heading h1 {
-      font-size: 60px;
+      font-size: 58px;
       line-height: -10px;
       padding-right: 18%;
       font-weight: 700;
@@ -190,7 +190,6 @@ const downloadCv = () => {
     @media only screen and (max-width: 992px) {
       width: 100%;
       order: 1;
-      
     }
 
     .image{
@@ -246,12 +245,12 @@ const downloadCv = () => {
           animation-timing-function: linear;
           @media only screen and (max-width: 992px){
           position:absolute;
-          padding: 37px 0px 0px 150px;
+          padding: 0px 0px 0px 170px;
           margin: 0px -14px;
-          width: 60%;
+          width: 70%;
           }
           @media only screen and (max-width: 576px) {
-            padding: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 90px;
 
           }
         }

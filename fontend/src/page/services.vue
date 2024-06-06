@@ -76,7 +76,7 @@ const getService = async () => {
       .service-grid {
         margin-top: 50px;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-gap: 24px;
         box-sizing: border-box;
 
