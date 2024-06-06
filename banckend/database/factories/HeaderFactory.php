@@ -17,10 +17,10 @@ class HeaderFactory extends Factory
     public function definition()
     {
         return [
-            'short_title' => 'I AM DEVELOPER',
-            'title' => 'Creative Design and Web Solution Design', 
-            'short_desc' => 'A passionate programmer , born and brought up in Bangladesh. I am a Full Stack Web Developer with React.js, Redux, Express.js, Node.js, mongodb, mysql, php, laravel as my tech stack.',
-            'image' => 'https://static.vecteezy.com/system/resources/previews/020/389/525/original/hand-drawing-cartoon-girl-cute-girl-drawing-for-profile-picture-vector.jpg',
+            'short_title' => 'Professional Web and WordPress Plugin Developer',
+            'title' => 'Welcome to Chadni Talukdar\'s Portfolio', 
+            'short_desc' => 'Hello! I’m Chadni Talukdre, a passionate and experienced web developer specializing in creating dynamic websites and custom WordPress plugins. With a keen eye for detail and a commitment to delivering high-quality work, I help businesses establish their online presence and enhance their digital functionality.',
+            'image' => 'https://bcciplayerimages.s3.ap-south-1.amazonaws.com/ipl/IPLHeadshot2023/2.png',
         ];
     }
 }

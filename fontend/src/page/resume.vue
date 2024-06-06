@@ -33,7 +33,7 @@ const getExperience = async () => {
                 <p>Resume</p>
               </div>
 
-              <h2>My Soft Skills</h2>
+              <h2>My Skills</h2>
             </div>
             <div class="service-grid">
 

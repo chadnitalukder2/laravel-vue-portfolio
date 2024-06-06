@@ -20,15 +20,13 @@ class AboutFactory extends Factory
         return [
             'short_title' => 'ABOUT ME',
             'title' => 'Hi there! I am Chadni Talukder',
-            'description' => 'A passionate programmer , born and brought up in Bangladesh. I am a Full Stack Web Developer with React.js, Redux, Express.js, Node.js, mongodb, mysql, php, laravel as my tech stack.
-                In 2017, I started my Engineering with specialization in computer science and Engineering.
-                Working with the clients, my goal is always driven towards providing amazing experience with the best level of quality and service to them.
-                Along with that. I love learning about new technologies.
+            'description' => 'Hello! I’m Chadni Talukdar, an enthusiastic and dedicated web and WordPress plugin developer. My journey into the world of web development began with a deep fascination for technology and a desire to create impactful digital experiences.
+            My passion for web development drives me to stay updated with the latest industry trends and technologies. I am committed to delivering high-quality work and am always eager to take on new challenges. Whether it’s developing a software, I approach each project with creativity and meticulous attention to detail.
                 ',
             'image' => 'https://static.vecteezy.com/system/resources/previews/020/389/525/original/hand-drawing-cartoon-girl-cute-girl-drawing-for-profile-picture-vector.jpg',
-            'complete_project' => 57,
+            'complete_project' => 10,
             'year_experience' => 1,
-            'cv' => 'file:///C:/Users/dasni/Downloads/puja.pdf',
+            'cv' => 'https://drive.google.com/file/d/1E7gCW4BLV8YvrfRjS0fyPX3gBVg9gT6R/view',
         ];
     }
 }
