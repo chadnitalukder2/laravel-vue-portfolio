@@ -259,4 +259,6 @@ const downloadCv = () => {
   }
 }
 
+
+
 </style>
